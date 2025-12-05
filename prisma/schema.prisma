@@ -1,32 +1,226 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./db/custom.db"
 }
 
+// Users table for authentication
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String
+  fullName      String?
+  avatarUrl     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  profile       UserProfile?
+  blogPosts     BlogPost[]
+  userData      UserData[]
+  adminUser     AdminUser?
+  systemLogs    SystemLog[]
+
+  @@map("users")
 }
 
-model Post {
+// User profile data
+model UserProfile {
   id        String   @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
+  userId    String   @unique
+  email     String
+  fullName  String?
+  avatarUrl String?
+  cash      Float    @default(0)
+  bank      Float    @default(0)
+  savings   Float    @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+// User financial data
+model UserData {
+  id          String    @id @default(cuid())
+  userId      String
+  type        String    // 'income', 'expense', 'recurring', 'note'
+  amount      Float?
+  description String?
+  category    String?
+  date        DateTime?
+  content     String?   // For notes
+  title       String?   // For notes
+  frequency   String?   // For recurring transactions
+  startDate   DateTime? // For recurring transactions
+  endDate     DateTime? // For recurring transactions
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_data")
+}
+
+// Blog posts
+model BlogPost {
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  excerpt       String?
+  content       String
+  featuredImage String?
+  authorId      String
+  authorName    String
+  authorAvatar  String?
+  category      String
+  tags          String    // JSON array string
+  metaTitle     String?
+  metaDescription String?
+  metaKeywords  String?   // JSON array string
+  status        String    @default("draft") // draft, published, archived
+  featured      Boolean   @default(false)
+  viewCount     Int       @default(0)
+  readingTime   Int?      // in minutes
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  author    User            @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  analytics BlogAnalytics[]
+  comments  BlogComment[]
+
+  @@map("blog_posts")
+}
+
+// Blog categories
+model BlogCategory {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  color       String   @default("#10b981")
+  icon        String   @default("BookOpen")
+  createdAt   DateTime @default(now())
+
+  @@map("blog_categories")
+}
+
+// Blog analytics
+model BlogAnalytics {
+  id        String   @id @default(cuid())
+  postId    String
+  ipAddress String?
+  userAgent String?
+  referrer  String?
+  viewedAt  DateTime @default(now())
+
+  // Relations
+  post BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("blog_analytics")
+}
+
+// Blog comments
+model BlogComment {
+  id         String   @id @default(cuid())
+  postId     String
+  authorName String
+  authorEmail String?
+  content    String
+  parentId   String?
+  status     String   @default("pending") // pending, approved, rejected
+  createdAt  DateTime @default(now())
+
+  // Relations
+  post     BlogPost      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parent   BlogComment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies  BlogComment[] @relation("CommentReplies")
+
+  @@map("blog_comments")
+}
+
+// Admin users
+model AdminUser {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("admin_users")
+}
+
+// Investments
+model Investment {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String   // crypto, stock, currency, etc.
+  symbol      String
+  name        String
+  amount      Float
+  buyPrice    Float
+  currentPrice Float?
+  currency    String   @default("USD")
+  buyDate     DateTime
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("investments")
+}
+
+// System Logs
+model SystemLog {
+  id          String   @id @default(cuid())
+  type        String   // 'user_login', 'admin_action', 'api_request', 'error', 'security', 'performance'
+  level       String   @default("info") // 'debug', 'info', 'warn', 'error', 'fatal'
+  userId      String?  // User ID if applicable
+  adminId     String?  // Admin ID if applicable
+  action      String   // Action performed
+  description String?  // Detailed description
+  metadata    String?  // JSON string for additional data
+  ipAddress   String?
+  userAgent   String?
+  endpoint    String?  // API endpoint for API requests
+  method      String?  // HTTP method for API requests
+  statusCode  Int?     // HTTP status code for API requests
+  responseTime Int?    // Response time in ms for performance logs
+  error       String?  // Error message for error logs
+  stackTrace  String?  // Stack trace for error logs
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("system_logs")
+}
+
+// Log Statistics for performance optimization
+model LogStats {
+  id            String   @id @default(cuid())
+  date          DateTime @default(now())
+  logType       String   // 'user_login', 'admin_action', 'api_request', 'error', 'security', 'performance'
+  totalCount    Int      @default(0)
+  errorCount    Int      @default(0)
+  avgResponseTime Float?  // Average response time for API requests
+  uniqueUsers   Int?     // Unique users for the day
+  metadata      String?  // JSON string for additional stats
+
+  @@unique([date, logType])
+  @@map("log_stats")
 }

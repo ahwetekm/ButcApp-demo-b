@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Auth</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { padding: 10px 20px; margin: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>Authentication Test</h1>
+    
+    <div id="status"></div>
+    
+    <button onclick="setToken()">Set Test Token</button>
+    <button onclick="checkToken()">Check Token</button>
+    <button onclick="clearToken()">Clear Token</button>
+    <button onclick="goToInvestments()">Go to Investments</button>
+    
+    <script>
+        const testToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlwdnczNWYwMDAwYWhqYjN4eHhzZ21kIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0NzU4OTExLCJleHAiOjE3NjczNTA5MTF9.vjb5Ee_BPtKoSZA5zPbC2vfOElcXGNJnO78lr-U4P0g';
+        
+        function setToken() {
+            localStorage.setItem('auth_token', testToken);
+            showStatus('Token set successfully!', 'success');
+        }
+        
+        function checkToken() {
+            const token = localStorage.getItem('auth_token');
+            if (token) {
+                showStatus('Token found: ' + token.substring(0, 50) + '...', 'success');
+            } else {
+                showStatus('No token found', 'error');
+            }
+        }
+        
+        function clearToken() {
+            localStorage.removeItem('auth_token');
+            showStatus('Token cleared!', 'success');
+        }
+        
+        function goToInvestments() {
+            window.open('http://localhost:3000/app/investments', '_blank');
+        }
+        
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        // Auto-check on load
+        checkToken();
+    </script>
+</body>
+</html>

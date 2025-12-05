@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Token Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; margin: 5px; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Token Debug Tool</h1>
+    
+    <div class="test-section">
+        <h3>Current Token Status</h3>
+        <button onclick="checkTokenStatus()">Check Token Status</button>
+        <div id="tokenStatus"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test Login</h3>
+        <button onclick="testLogin()">Test Login</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test Dashboard Access</h3>
+        <button onclick="testDashboard()">Test Dashboard</button>
+        <div id="dashboardResult"></div>
+    </div>
+
+    <script>
+        function checkTokenStatus() {
+            const resultDiv = document.getElementById('tokenStatus');
+            
+            // Check all storage locations
+            const cookieToken = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('auth-token='))
+                ?.split('=')[1];
+                
+            const localToken = localStorage.getItem('adminToken');
+            const sessionToken = sessionStorage.getItem('adminToken');
+            const userData = localStorage.getItem('adminUser');
+            
+            resultDiv.innerHTML = `
+                <p><strong>Cookie Token:</strong> ${cookieToken ? 'Found (' + cookieToken.substring(0, 20) + '...)' : 'Not found'}</p>
+                <p><strong>Local Storage Token:</strong> ${localToken ? 'Found (' + localToken.substring(0, 20) + '...)' : 'Not found'}</p>
+                <p><strong>Session Storage Token:</strong> ${sessionToken ? 'Found (' + sessionToken.substring(0, 20) + '...)' : 'Not found'}</p>
+                <p><strong>User Data:</strong> ${userData ? 'Found' : 'Not found'}</p>
+            `;
+        }
+        
+        async function testLogin() {
+            const resultDiv = document.getElementById('loginResult');
+            resultDiv.innerHTML = 'Testing login...';
+            
+            try {
+                const response = await fetch('/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'admin@butcapp.com',
+                        password: 'admin123'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Set token in cookie
+                    document.cookie = `auth-token=${data.data.token}; path=/; max-age=${24 * 60 * 60}; samesite=lax`;
+                    
+                    resultDiv.innerHTML = `
+                        <div class="success">✓ Login successful</div>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">✗ Login failed: ${data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">✗ Login error: ${error.message}</div>`;
+            }
+        }
+        
+        async function testDashboard() {
+            const resultDiv = document.getElementById('dashboardResult');
+            resultDiv.innerHTML = 'Testing dashboard access...';
+            
+            try {
+                const response = await fetch('/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard');
+                
+                if (response.redirected) {
+                    resultDiv.innerHTML = `
+                        <div class="error">✗ Redirected to: ${response.url}</div>
+                        <p>This means middleware is blocking access</p>
+                    `;
+                } else if (response.ok) {
+                    resultDiv.innerHTML = `<div class="success">✓ Dashboard accessible</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">✗ Dashboard error: ${response.status}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">✗ Dashboard error: ${error.message}</div>`;
+            }
+        }
+        
+        // Auto-check token status on load
+        window.onload = function() {
+            checkTokenStatus();
+        };
+    </script>
+</body>
+</html>

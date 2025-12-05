@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Auth Token</title>
+</head>
+<body>
+    <h1>Auth Token Test</h1>
+    <p>Setting auth token for test@example.com...</p>
+    <script>
+        // Test token for test@example.com
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlwdnczNWYwMDAwYWhqYjN4eHhzZ21kIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0NzU4OTExLCJleHAiOjE3NjczNTA5MTF9.vjb5Ee_BPtKoSZA5zPbC2vfOElcXGNJnO78lr-U4P0g';
+        
+        localStorage.setItem('auth_token', token);
+        
+        console.log('Token set:', token);
+        document.body.innerHTML += '<p>Token set successfully! <a href="http://localhost:3000/app/investments" target="_blank">Go to Investments Page</a></p>';
+    </script>
+</body>
+</html>

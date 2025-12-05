@@ -1,0 +1,1 @@
+localStorage.setItem('auth_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlwdnczNWYwMDAwYWhqYjN4eHhzZ21kIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0NzU4OTExLCJleHAiOjE3NjczNTA5MTF9.vjb5Ee_BPtKoSZA5zPbC2vfOElcXGNJnO78lr-U4P0g'); window.location.href = '/app/investments';
