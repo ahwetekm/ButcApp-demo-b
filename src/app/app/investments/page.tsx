@@ -409,9 +409,9 @@ export default function InvestmentsPage() {
       const response = await fetch('/api/currency')
       const result = await response.json()
       
-      console.log('Currency API response:', { success: result.success, cached: result.cached, dataLength: result.data?.length })
+      console.log('Currency API response:', { success: result?.success, cached: result?.cached, dataLength: result?.data?.length, hasResult: !!result })
       
-      if (result.success && result.data && Array.isArray(result.data)) {
+      if (result && result.success && result.data && Array.isArray(result.data) && result.data.length > 0) {
         const data = result.data.map((item: any) => ({
           symbol: item.symbol,
           name: item.name.replace('ABD DOLARI', 'Amerikan Doları')
@@ -437,6 +437,13 @@ export default function InvestmentsPage() {
         }
       } else {
         console.error('Invalid currency API response:', result)
+        console.error('Response details:', { 
+          hasResult: !!result,
+          success: result?.success,
+          hasData: !!result?.data,
+          isArray: Array.isArray(result?.data),
+          dataLength: result?.data?.length
+        })
         // Show error message to user
         setCurrencyData([])
         setDisplayedCurrencies([])
