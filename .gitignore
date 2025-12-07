@@ -1,65 +1,26 @@
 # Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.pnpm-store/
 
-# Next.js
+# Build outputs
 .next/
 out/
 dist/
 build/
 
-# Environment variables (hepsi GitHub'a gidecek)
-# .env.development.local
-# .env.test.local
-# .env.production.local
-
-# Database (hepsi GitHub'a gidecek)
-# *.db
-# *.sqlite
-# *.sqlite3
-# db/
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Logs
-*.log
-logs/
-app.log
-dev.log
-direct-dev.log
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Cache
-.cache/
-.parcel-cache/
-
-# Testing
-coverage/
-.nyc_output/
-
-# Production
-.vercel
-
-# Temporary files
-*.tmp
-*.temp
-
-# Backup files
-backups/
-*.backup
-
-# Lock files (keep package-lock.json but ignore others)
-yarn.lock
-pnpm-lock.yaml
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Runtime data
 pids
@@ -67,16 +28,73 @@ pids
 *.seed
 *.pid.lock
 
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
 # Optional npm cache directory
 .npm
 
 # Optional eslint cache
 .eslintcache
 
-# Microservice files
-# mini-services/
+# Optional REPL history
+.node_repl_history
 
-# Temporary scripts
-create-admin.js
-create-test-admin.js
-ubuntu-*.js
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Lock files (keep only pnpm-lock.yaml)
+package-lock.json
+yarn.lock
