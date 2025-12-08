@@ -1,141 +1,294 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# <div align="center">
+  <img src="public/logo.png" alt="ButcApp Logo" width="120" height="120">
+</div>
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+<h1 align="center">ButcApp</h1>
+<p align="center">
+  <strong>Modern Kişisel Muhasebe Uygulaması</strong>
+</p>
 
-## ✨ Technology Stack
+<p align="center">
+  <a href="https://github.com/ahwetekm/ButcApp/stargazers">
+    <img src="https://img.shields.io/github/stars/ahwetekm/ButcApp?style=for-the-badge&color=10b981" alt="Stars">
+  </a>
+  <a href="https://github.com/ahwetekm/ButcApp/network/members">
+    <img src="https://img.shields.io/github/forks/ahwetekm/ButcApp?style=for-the-badge&color=3b82f6" alt="Forks">
+  </a>
+  <a href="https://github.com/ahwetekm/ButcApp/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ahwetekm/ButcApp?style=for-the-badge&color=8b5cf6" alt="License">
+  </a>
+  <a href="https://github.com/ahwetekm/ButcApp/issues">
+    <img src="https://img.shields.io/github/issues/ahwetekm/ButcApp?style=for-the-badge&color=ef4444" alt="Issues">
+  </a>
+</p>
 
-This scaffold provides a robust foundation built with:
+<p align="center">
+  <em>Finansal geleceğinizi bugün yönetmeye başlayın!</em>
+</p>
 
-### 🎯 Core Framework
-- **⚡ Next.js 15** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+## 📖 Hakkında
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+ButcApp, kişisel finans yönetimini basitleştiren modern ve kullanıcı dostu bir web uygulamasıdır. Karmaşık arayüzlerden sıkılan kullanıcılar için tasarlanan ButcApp, tüm finansal işlemlerinizi tek bir yerden yönetmenizi sağlar.
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+### 🎯 Misyonumuz
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Axios** - Promise-based HTTP client
+Kişisel finans yönetimini herkes için erişilebilir, anlaşılır ve keyifli hale getirmek. Karmaşık sayılar ve tablolar yerine, sade ve basit bir arayüz sunarak finansal farkındalığı artırmak.
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+## ✨ Özellikler
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+### 💰 **Akıllı Bakiye Takibi**
+- 3 farklı hesap türü (Nakit, Banka, Birikim)
+- Anlık bakiye görüntüleme
+- Detaylı işlem geçmişi
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
+### 🔄 **Otomatik İşlemler**
+- Düzenli gelir/gider otomasyonu
+- Maaş, kira, kredi gibi tekrarlayan işlemler
+- Otomatik hatırlatıcılar
 
-## 🎯 Why This Scaffold?
+### ⚡ **Anında Transfer**
+- Hesaplar arasında hızlı para transferi
+- Anında işlem onayı
+- Transfer geçmişi takibi
 
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
+### 📊 **Detaylı Raporlar**
+- Gelir-gider analizi
+- Kategori bazlı harcama raporları
+- Aylık/yıllık finansal özetler
+- Pasta, çubuk ve çizgi grafikler
+- Hesap dağılım görselleştirmeleri
 
-## 🚀 Quick Start
+### 🎨 **Modern Tasarım**
+- Minimalist ve kullanıcı dostu arayüz
+- Açık ve koyu tema desteği
+- Responsive tasarım (Masaüstü, Tablet, Mobil)
+- Yumuşak animasyonlar ve geçişler
+
+### 🔒 **Güvenlik**
+- %100 yerel veri saklama
+- Kişisel bilgilerin güvende kalması
+- Hiçbir üçüncü parti veri paylaşımı
+
+## 🚀 Kurulum
+
+### Gereksinimler
+
+- Node.js 18+ 
+- npm veya yarn
+
+### Adım 1: Projeyi Klonlayın
 
 ```bash
-# Install dependencies
+git clone https://github.com/ahwetekm/ButcApp.git
+cd ButcApp
+```
+
+### Adım 2: Bağımlılıkları Yükleyin
+
+```bash
 npm install
+```
 
-# Start development server
+### Adım 3: Geliştirme Sunucusunu Başlatın
+
+```bash
 npm run dev
+```
 
-# Build for production
+Uygulama [http://localhost:3000](http://localhost:3000) adresinde çalışacaktır.
+
+### Adım 4: Production için Build
+
+```bash
 npm run build
-
-# Start production server
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+## 📱 Ekran Görüntüleri
 
-## 🤖 Powered by Z.ai
+### Desktop Görünüm
+<div align="center">
+  <img src="public/dashboard-preview.png" alt="Desktop Dashboard" width="800">
+</div>
 
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
+### Mobil Görünüm
+<div align="center">
+  <img src="public/mobile-preview.png" alt="Mobile App" width="300">
+</div>
 
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
+### Grafik ve İstatistikler
+<div align="center">
+  <img src="public/charts-preview.png" alt="Charts and Statistics" width="800">
+</div>
 
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
+## 📊 Grafik ve İstatistik Özellikleri
 
-## 📁 Project Structure
+ButcApp, finansal verilerinizi görselleştirmek için zengin grafik seçenekleri sunar:
+
+### 🥧 Hesap Dağılımı (Pasta Grafiği)
+- Nakit, banka ve birikim hesaplarınızın dağılımını gösterir
+- Yüzde oranları ile hangi hesapta ne kadar paranız olduğunu anında görün
+- Renk kodlu görselleştirme ile kolay okunabilirlik
+
+### 📊 Gelir/Gider Karşılaştırması (Çubuk Grafiği)
+- Toplam gelir ve giderlerinizi yan yana karşılaştırın
+- Finansal dengenizi tek bakışta görün
+- Anlaşılır renk kodlaması (yeşil: gelir, kırmızı: gider)
+
+### 📈 Aylık Harcama Trendi (Çizgi Grafiği)
+- Son 6 aylık gelir, gider ve net tutar trendlerini izleyin
+- Finansal alışkanlıklarınızın zaman içindeki değişimini görün
+- Gelecek için daha iyi bütçe planlaması yapın
+
+### 🎯 Grafik Özellikleri
+- **Responsive Tasarım**: Tüm cihazlarda mükemmel görünüm
+- **İnteraktif Tooltip**: Grafikler üzerinde detaylı bilgi
+- **Modern Animasyonlar**: Smooth geçişler ve hover efektleri
+- **Koyu/Açık Tema Uyumu**: Tüm temalarda okunabilirlik
+- **Gerçek Zamanlı Veri**: İşlemleriniz anında grafiklere yansır
+
+## 🛠️ Teknoloji Stack
+
+| Teknoloji | Açıklama |
+|-----------|----------|
+| **Next.js 15** | React framework for production |
+| **TypeScript 5** | Type-safe JavaScript |
+| **Tailwind CSS 4** | Utility-first CSS framework |
+| **shadcn/ui** | Modern UI component library |
+| **Lucide React** | Beautiful icon library |
+| **Next Themes** | Dark/light mode support |
+| **Framer Motion** | Smooth animations |
+
+## 🏗️ Proje Yapısı
 
 ```
 src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Homepage
+├── components/            # Reusable components
+│   ├── ui/               # shadcn/ui components
+│   ├── theme-provider.tsx # Theme context
+│   └── theme-toggle.tsx   # Theme switcher
+└── lib/                  # Utilities and helpers
 ```
 
-## 🎨 Available Features & Components
+## 🎨 Tasarım Prensipleri
 
-This scaffold includes a comprehensive set of modern web development tools:
+### Minimalist Yaklaşım
+- Az ama öz içerik
+- Göz yormayan renk paleti
+- Temiz ve düzenli arayüz
 
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
+### Kullanıcı Odaklılık
+- Tek tıkla işlem yapabilme
+- Anlaşılır navigasyon
+- Hızlı performans
 
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
+### Erişilebilirlik
+- Klavye navigasyonu desteği
+- Ekran okuyucu uyumluluğu
+- Yüksek kontrast oranları
 
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
+## 🔧 Özelleştirme
 
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Axios + TanStack Query
-- **State Management**: Simple and scalable with Zustand
+### Tema Renklerini Değiştirme
 
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
+`src/app/globals.css` dosyasında CSS değişkenlerini düzenleyin:
 
-## 🤝 Get Started with Z.ai
+```css
+:root {
+  --primary: oklch(0.205 0 0); /* Ana renk */
+  --background: oklch(1 0 0); /* Arka plan */
+  /* ... */
+}
+```
 
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
+### Yeni Özellik Ekleme
+
+1. Yeni component oluşturun: `src/components/`
+2. Sayfaya ekleyin: `src/app/page.tsx`
+3. Stilleri düzenleyin: `src/app/globals.css`
+
+## 🤝 Katkıda Bulunma
+
+Katkılarınızı bekliyoruz! Lütfen aşağıdaki adımları izleyin:
+
+1. Fork yapın
+2. Feature branch oluşturun: `git checkout -b feature/amazing-feature`
+3. Değişikliklerinizi commit edin: `git commit -m 'Add amazing feature'`
+4. Branch'e push edin: `git push origin feature/amazing-feature`
+5. Pull Request oluşturun
+
+### Katkı Kuralları
+
+- Kodunuzu Prettier ile formatlayın
+- TypeScript kurallarına uyun
+- Test yazın (mümkünse)
+- Commit mesajlarını anlaşılır yazın
+
+## 📄 Lisans
+
+Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+
+## 🙏 Teşekkürler
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Lucide](https://lucide.dev/) - Icon library
+
+## 📞 İletişim
+
+### 📧 İletişim Formu Özellikleri
+- **Modern Arayüz**: Kullanıcı dostu ve responsive tasarım
+- **Kategori Bazlı**: Öneri, Şikayet, Hata Bildirimi, Özellik Talebi
+- **Otomatik Entegrasyon**: Mailto linki ile doğrudan mail gönderimi
+- **Form Doğrulama**: Zorunlu alanlar ve geçerlilik kontrolleri
+- **Durum Bildirimleri**: Başarı ve hata mesajları
+- **Güvenli**: Sunucu taraflı veri saklama yok
+
+### 📞 Formspree Entegrasyonu
+- **Ücretsiz Servis**: Formspree ile 50 form/ay, 1000 gönderim/ay
+- **Güvenli Gönderim**: HTTPS ile şifrelenmiş veri transferi
+- **Otomatik Yanıtlar**: Formspree dashboard üzerinden yanıt yönetimi
+- **Spam Filtreleme**: Built-in spam koruması
+- **Dosya Yükleme**: Drag & drop, 5MB limiti, çoklu format desteği
+- **Dosya Önizlemi**: Yüklenen dosyanın adını gösterme ve silme
+- **Güvenli Yükleme**: Formspree üzerinden güvenli şifreleme
+
+### Dosya Yükleme Ekran Görüntüsü
+<div align="center">
+  <img src="public/file-upload-final.png" alt="File Upload Final Preview" width="800">
+</div>
+
+### Formspree Formu Ekran Görüntüsü
+<div align="center">
+  <img src="public/formspree-integration.png" alt="Formspree Integration" width="800">
+</div>
+
+### 📞 İletişim Kanalları
+- **İletişim Formu**: Site üzerinden doğrudan mesaj gönderin
+- **E-posta**: [ahwetze@proton.me](mailto:ahwetze@proton.me)
+- **Proje Linki**: [https://github.com/ahwetekm/ButcApp](https://github.com/ahwetekm/ButcApp)
+- **Issues**: [https://github.com/ahwetekm/ButcApp/issues](https://github.com/ahwetekm/ButcApp/issues)
+- **Discussions**: [https://github.com/ahwetekm/ButcApp/discussions](https://github.com/ahwetekm/ButcApp/discussions)
+
+### İletişim Formu Ekran Görüntüsü
+<div align="center">
+  <img src="public/contact-form-preview.png" alt="Contact Form Preview" width="800">
+</div>
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+<div align="center">
+  <p>
+    <strong>⭐ Eğer projeyi beğendiyseniz, lütfen yıldız vermeyi unutmayın!</strong>
+  </p>
+  <p>
+    Made with ❤️ by <a href="https://github.com/ahwetekm">ahwetekm</a>
+  </p>
+</div>
+# Updated git configuration
+// Updated: Sun Nov 30 15:26:09 UTC 2025

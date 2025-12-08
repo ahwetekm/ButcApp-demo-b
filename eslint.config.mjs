@@ -31,7 +31,7 @@ const eslintConfig = [
       "@next/next/no-html-link-for-pages": "off",
       
       // 一般JavaScript规则
-      "prefer-const": "off",  // 关闭prefer-const规则
+      "prefer-const": "off",
       "no-unused-vars": "off",
       "no-console": "off",
       "no-debugger": "off",
@@ -46,6 +46,9 @@ const eslintConfig = [
       "no-useless-escape": "off",
     },
   },
+  {
+    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts", "*.js"]
+  }
 ];
 
 export default eslintConfig;

@@ -1,13 +1,24 @@
-import { PrismaClient } from '@prisma/client'
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import Database from 'better-sqlite3';
+import { schema } from './db/schema';
+import path from 'path';
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
+// Create database connection
+const sqlite = new Database(path.join(process.cwd(), 'db', 'custom.db'));
 
-export const db =
-  globalForPrisma.prisma ??
-  new PrismaClient({
-    log: ['query'],
-  })
+// Enable foreign keys
+sqlite.pragma('foreign_keys = ON');
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db
+// Export database instance with schema
+export const db = drizzle(sqlite, { schema });
+
+// Export the raw database instance for migrations
+export const rawDb = sqlite;
+
+// Export schema for easy access
+export * from './db/schema';
+
+// Helper function to close database connection
+export const closeDb = () => {
+  sqlite.close();
+};
