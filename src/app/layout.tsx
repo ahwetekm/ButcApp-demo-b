@@ -8,6 +8,7 @@ import PageTransition from "@/components/page-transition";
 
 // Meta bilgileri
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   title: "Butcap - Kişisel Muhasebe ve Finans Yönetimi",
   description: "Butcap ile nakit, birikim ve banka hesaplarınızı tek yerden yönetin. Ücretsiz, güvenli ve modern kişisel finans uygulaması. Bütçe takibi, yatırım analizi ve daha fazlası.",
   keywords: ["Butcap", "kişisel finans", "muhasebe", "bütçe", "finans yönetimi", "para takibi", "yatırım", "birikim", "banka hesabı", "nakit takibi"],
