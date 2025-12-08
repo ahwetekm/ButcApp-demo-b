@@ -9,11 +9,11 @@ module.exports = {
       exec_mode: "cluster",
       env: {
         "NODE_ENV": "production",
-        "PORT": 3000
+        "PORT": 3001
       },
       env_production: {
         "NODE_ENV": "production",
-        "PORT": 3000
+        "PORT": 3001
       },
       log_date_format: "YYYY-MM-DD HH:mm:ss Z",
       error_file: "/var/log/pm2/butcapp-error.log",
