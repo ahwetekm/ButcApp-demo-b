@@ -1,5 +1,5 @@
 # ButcApp Production Caddy Configuration
-# butcapp.com domain için Caddy yapılandırması
+# Compatible with Caddy 2.x
 
 # Global settings
 {
@@ -15,50 +15,21 @@
 	}
 }
 
-# Rate limiting
-(rate_limit_api) {
-	rate {
-		zone api
-		key {remote_host}
-		events 20
-		window 1s
-	}
-}
-
-(rate_limit_general) {
-	rate {
-		zone general
-		key {remote_host}
-		events 40
-		window 1s
-	}
-}
-
 # Main domain configuration
 butcapp.com {
-	# Handle both HTTP and HTTPS automatically
-	# Caddy will automatically redirect HTTP to HTTPS and handle SSL certificates
-	
 	# Security headers
 	header {
-		# HSTS
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-		
-		# Other security headers
 		X-Frame-Options DENY
 		X-Content-Type-Options nosniff
 		X-XSS-Protection "1; mode=block"
 		Referrer-Policy "strict-origin-when-cross-origin"
 		Permissions-Policy "camera=(), microphone=(), geolocation=()"
-		
-		# Remove server signature
 		-Server
 	}
 	
-	# Handle API routes with rate limiting
+	# Handle API routes
 	handle /api/* {
-		import rate_limit_api
-		
 		# CORS headers for API
 		@cors_preflight method OPTIONS
 		handle @cors_preflight {
@@ -69,48 +40,25 @@ butcapp.com {
 		}
 		
 		# Proxy to Next.js application
-		reverse_proxy localhost:3001 {
-			# HTTP/2 support
-			transport http {
-				tls_timeout 10s
-				dial_timeout 10s
-				expect_continue_timeout 1s
-			}
-			
-			# Headers
-			header_up Host {http.reverse_proxy.upstream.hostport}
-			header_up X-Real-IP {http.request.remote_host}
-			header_up X-Forwarded-For {http.request.header.X-Forwarded-For}, {http.request.remote_host}
-			header_up X-Forwarded-Proto {http.request.scheme}
-			header_up X-Forwarded-Host {http.request.host}
-			
-			# Timeouts
-			buffer_requests
-			dial_timeout 30s
-			read_timeout 300s
-			write_timeout 300s
-		}
+		reverse_proxy localhost:3001
 	}
 	
 	# Handle static files with caching
 	handle_path /static/* {
 		file_server
 		header Cache-Control "public, max-age=31536000, immutable"
-		header Expires "Thu, 31 Dec 2037 23:55:55 GMT"
 	}
 	
 	# Handle public assets
 	handle_path /_next/static/* {
 		file_server
 		header Cache-Control "public, max-age=31536000, immutable"
-		header Expires "Thu, 31 Dec 2037 23:55:55 GMT"
 	}
 	
 	# Handle images and other assets
 	handle_path /*.{jpg,jpeg,png,gif,ico,css,js,woff,woff2,ttf,svg,webp,avif} {
 		file_server
 		header Cache-Control "public, max-age=31536000, immutable"
-		header Expires "Thu, 31 Dec 2037 23:55:55 GMT"
 	}
 	
 	# Health check endpoint
@@ -138,32 +86,7 @@ butcapp.com {
 	}
 	
 	# Main application proxy
-	import rate_limit_general
-	reverse_proxy localhost:3001 {
-		# HTTP/2 support
-		transport http {
-			tls_timeout 10s
-			dial_timeout 10s
-			expect_continue_timeout 1s
-		}
-		
-		# Headers
-		header_up Host {http.reverse_proxy.upstream.hostport}
-		header_up X-Real-IP {http.request.remote_host}
-		header_up X-Forwarded-For {http.request.header.X-Forwarded-For}, {http.request.remote_host}
-		header_up X-Forwarded-Proto {http.request.scheme}
-		header_up X-Forwarded-Host {http.request.host}
-		
-		# Timeouts
-		buffer_requests
-		dial_timeout 30s
-		read_timeout 300s
-		write_timeout 300s
-		
-		# WebSocket support
-		header_up Connection {http.request.header.Connection}
-		header_up Upgrade {http.request.header.Upgrade}
-	}
+	reverse_proxy localhost:3001
 	
 	# Logging
 	log {
@@ -174,38 +97,9 @@ butcapp.com {
 		}
 		format json
 	}
-	
-	# Error pages
-	handle_errors {
-		@500 expression {http.error.status_code} == 500
-		handle @500 {
-			respond "Internal Server Error" 500
-		}
-		
-		@502 expression {http.error.status_code} == 502
-		handle @502 {
-			respond "Service Temporarily Unavailable" 502
-		}
-		
-		@503 expression {http.error.status_code} == 503
-		handle @503 {
-			respond "Service Temporarily Unavailable" 503
-		}
-		
-		@504 expression {http.error.status_code} == 504
-		handle @504 {
-			respond "Gateway Timeout" 504
-		}
-	}
 }
 
 # www subdomain redirect
 www.butcapp.com {
 	redir https://butcapp.com{uri} 301
-}
-
-# Optional: Staging subdomain
-staging.butcapp.com {
-	# Similar configuration but for staging environment
-	reverse_proxy localhost:3002
 }
