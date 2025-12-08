@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { db, adminUsers, users } from '@/lib/db'
 import { verifyAdminToken } from '@/lib/jwt'
 import { Logger } from '@/lib/logger'
 import { corsMiddleware, handleOptions } from '@/lib/cors-middleware'
-
-const prisma = new PrismaClient()
+import { eq, desc } from 'drizzle-orm'
 
 export async function GET(request: NextRequest) {
   const optionsResponse = handleOptions(request)
@@ -37,28 +36,29 @@ export async function GET(request: NextRequest) {
       }, { status: 403, headers: corsHeaders })
     }
 
-    // Admin kullanıcılarını getir
-    const adminUsers = await prisma.adminUser.findMany({
-      include: {
+    // Admin kullanıcılarını getir - Drizzle ile
+    const adminUsersList = await db
+      .select({
+        id: adminUsers.id,
+        role: adminUsers.role,
+        createdAt: adminUsers.createdAt,
+        updatedAt: adminUsers.updatedAt,
         user: {
-          select: {
-            id: true,
-            email: true,
-            fullName: true,
-            createdAt: true
-          }
+          id: users.id,
+          email: users.email,
+          fullName: users.fullName,
+          createdAt: users.createdAt
         }
-      },
-      orderBy: {
-        createdAt: 'desc'
-      }
-    })
+      })
+      .from(adminUsers)
+      .leftJoin(users, eq(adminUsers.userId, users.id))
+      .orderBy(desc(adminUsers.createdAt))
 
-    const formattedAdmins = adminUsers.map(admin => ({
+    const formattedAdmins = adminUsersList.map(admin => ({
       id: admin.id,
-      username: admin.user.email,
-      email: admin.user.email,
-      name: admin.user.fullName,
+      username: admin.user?.email || 'unknown',
+      email: admin.user?.email || 'unknown',
+      name: admin.user?.fullName || 'Unknown',
       role: admin.role,
       createdAt: admin.createdAt.toISOString(),
       lastLogin: null, // Bu bilgiyi systemLogs'dan alabiliriz

@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { db, users, adminUsers } from '@/lib/db'
 import bcrypt from 'bcryptjs'
 import { generateToken } from '@/lib/jwt'
 import { Logger } from '@/lib/logger'
 import { corsMiddleware, handleOptions } from '@/lib/cors-middleware'
-
-const prisma = new PrismaClient()
+import { eq } from 'drizzle-orm'
 
 export async function POST(request: NextRequest) {
   const optionsResponse = handleOptions(request)
@@ -37,11 +36,14 @@ export async function POST(request: NextRequest) {
     }
     */
 
-    const user = await prisma.user.findUnique({
-      where: { email: username }
-    })
+    // Drizzle ile kullanıcı bul
+    const user = await db
+      .select()
+      .from(users)
+      .where(eq(users.email, username))
+      .limit(1)
 
-    if (!user) {
+    if (user.length === 0) {
       await Logger.logSecurity('admin_not_found', `User not found for email: ${username}`, ipAddress, userAgent)
       return NextResponse.json({
         success: false,
@@ -49,11 +51,14 @@ export async function POST(request: NextRequest) {
       }, { status: 401, headers: corsHeaders })
     }
 
-    const adminUser = await prisma.adminUser.findUnique({
-      where: { userId: user.id }
-    })
+    // Admin kullanıcısını kontrol et
+    const adminUser = await db
+      .select()
+      .from(adminUsers)
+      .where(eq(adminUsers.userId, user[0].id))
+      .limit(1)
 
-    if (!adminUser) {
+    if (adminUser.length === 0) {
       await Logger.logSecurity('admin_auth_failed', `User ${username} is not an admin`, ipAddress, userAgent)
       return NextResponse.json({
         success: false,
@@ -61,7 +66,7 @@ export async function POST(request: NextRequest) {
       }, { status: 403, headers: corsHeaders })
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.passwordHash)
+    const isPasswordValid = await bcrypt.compare(password, user[0].passwordHash)
     
     if (!isPasswordValid) {
       await Logger.logSecurity('invalid_password', `Invalid password attempt for username: ${username}`, ipAddress, userAgent)
@@ -72,34 +77,34 @@ export async function POST(request: NextRequest) {
     }
 
     const tokenPayload = {
-      id: user.id,
-      userId: user.id,
-      adminId: adminUser.id,
-      username: user.email,
-      email: user.email,
-      role: adminUser.role || 'admin'
+      id: user[0].id,
+      userId: user[0].id,
+      adminId: adminUser[0].id,
+      username: user[0].email,
+      email: user[0].email,
+      role: adminUser[0].role || 'admin'
     }
 
     console.log('Generating token with payload:', tokenPayload)
     const token = await generateToken(tokenPayload)
     console.log('Generated token:', token)
 
-    await Logger.logAdminAction(adminUser.id, 'admin_login', 'Admin successfully logged in', {
-      username: user.email,
+    await Logger.logAdminAction(adminUser[0].id, 'admin_login', 'Admin successfully logged in', {
+      username: user[0].email,
       loginTime: new Date().toISOString()
     })
 
-    await Logger.logApiRequest('/api/auth', 'POST', 200, Date.now() - startTime, undefined, adminUser.id)
+    await Logger.logApiRequest('/api/auth', 'POST', 200, Date.now() - startTime, undefined, adminUser[0].id)
 
     const responseData = {
       success: true,
       data: {
         user: {
-          id: user.id,
-          username: user.email,
-          email: user.email,
-          name: user.fullName,
-          role: adminUser.role || 'admin',
+          id: user[0].id,
+          username: user[0].email,
+          email: user[0].email,
+          name: user[0].fullName,
+          role: adminUser[0].role || 'admin',
         },
         token
       },

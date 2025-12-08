@@ -1,4 +1,4 @@
-import { Investment } from '@prisma/client'
+import { Investment } from '@/lib/db'
 
 interface ProfitCalculation {
   totalInvestment: number

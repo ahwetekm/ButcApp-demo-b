@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import Database from 'better-sqlite3';
-import { schema } from './db/schema';
+import { schema } from './schema';
 import path from 'path';
 
 // Create database connection
@@ -16,7 +16,7 @@ export const db = drizzle(sqlite, { schema });
 export const rawDb = sqlite;
 
 // Export schema for easy access
-export * from './db/schema';
+export * from './schema';
 
 // Helper function to close database connection
 export const closeDb = () => {

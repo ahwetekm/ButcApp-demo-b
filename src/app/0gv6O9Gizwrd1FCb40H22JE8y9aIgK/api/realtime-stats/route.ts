@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyAdminToken } from '@/lib/jwt'
-import { PrismaClient } from '@prisma/client'
+//import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
+//const prisma = new PrismaClient()
 
 export async function GET(request: NextRequest) {
   try {

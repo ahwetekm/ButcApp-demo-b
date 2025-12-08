@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+//import { PrismaClient } from '@prisma/client'
 import { verifyAdminToken } from '@/lib/jwt'
 import { Logger } from '@/lib/logger'
 import { corsMiddleware, handleOptions } from '@/lib/cors-middleware'
 
-const prisma = new PrismaClient()
+//const prisma = new PrismaClient()
 
 export async function PUT(
   request: NextRequest,
