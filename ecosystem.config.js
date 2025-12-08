@@ -2,7 +2,11 @@ module.exports = {
   apps: [
     {
       name: "butcapp",
+<<<<<<< HEAD
       script: "pnpm",
+=======
+      script: "npm",
+>>>>>>> 0453dd6990a09020ca629977727e6f4302b6f7f7
       args: "start",
       cwd: "/var/www/butcapp",
       instances: 1,
@@ -28,16 +32,24 @@ module.exports = {
       ignore_watch: [
         "node_modules",
         "logs",
+<<<<<<< HEAD
         ".git",
         ".next"
+=======
+        ".git"
+>>>>>>> 0453dd6990a09020ca629977727e6f4302b6f7f7
       ],
       restart_delay: 4000,
       kill_timeout: 5000,
       wait_ready: true,
+<<<<<<< HEAD
       listen_timeout: 10000,
       // Health check
       health_check_grace_period: 3000,
       health_check_fatal_exceptions: true
+=======
+      listen_timeout: 10000
+>>>>>>> 0453dd6990a09020ca629977727e6f4302b6f7f7
     }
   ],
   deploy: {
