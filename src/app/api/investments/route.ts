@@ -82,7 +82,6 @@ export async function GET(request: NextRequest) {
       .from('investments')
       .select('*')
       .eq('userid', userId)
-      .eq('type', 'investment')
       .order('createdat', { ascending: false })
 
     if (error) {
@@ -102,19 +101,17 @@ export async function GET(request: NextRequest) {
     const transformedInvestments = (investments || []).map(inv => ({
       id: inv.id,
       userId: inv.userid,
-      type: inv.investmenttype,
+      type: inv.type, // Use type directly
       symbol: inv.symbol || '',
       name: inv.name,
       amount: inv.amount,
-      buyPrice: inv.purchaseprice || inv.amount,
-      currentPrice: inv.currentprice || inv.amount,
-      currency: inv.category || 'USD',
-      buyDate: inv.purchasedate ? new Date(inv.purchasedate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-      notes: inv.description,
-      createdAt: inv.createdat,
-      updatedAt: inv.updatedat,
-      quantity: inv.quantity,
-      category: inv.category
+      buyPrice: inv.buyprice, // Map from Supabase field
+      currentPrice: inv.currentprice, // Map from Supabase field
+      currency: inv.symbol?.split('/')[0] || 'USD',
+      buyDate: inv.buydate ? new Date(inv.buydate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+      notes: inv.notes,
+      createdAt: inv.createdat, // Map from Supabase field
+      updatedAt: inv.updatedat // Map from Supabase field
     }))
 
     console.log('✅ Investments transformed successfully')
@@ -167,19 +164,16 @@ export async function POST(request: NextRequest) {
     const investment = {
       id: `investment_${userId}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       userid: userId,
-      type: 'investment',
+      type: body.type || 'currency', // Use type directly, not investmenttype
       name: body.name.trim(),
-      description: body.notes?.trim() || '',
+      notes: body.notes?.trim() || '',
       amount: parseFloat(body.amount),
-      investmenttype: body.type || 'stock',
-      category: body.currency || 'USD',
       symbol: body.symbol || '',
-      quantity: body.quantity ? parseFloat(body.quantity) : null,
-      purchaseprice: parseFloat(body.buyPrice),
-      currentprice: parseFloat(body.currentPrice) || parseFloat(body.buyPrice),
-      purchasedate: body.buyDate || new Date().toISOString(),
-      createdat: new Date().toISOString(),
-      updatedat: new Date().toISOString()
+      buyprice: parseFloat(body.buyPrice), // Use buyprice for Supabase
+      currentprice: parseFloat(body.currentPrice) || parseFloat(body.buyPrice), // Use currentprice for Supabase
+      buydate: body.buyDate || new Date().toISOString(), // Use buydate for Supabase
+      createdat: new Date().toISOString(), // Use createdat for Supabase
+      updatedat: new Date().toISOString() // Use updatedat for Supabase
     }
 
     const { data: newInvestment, error } = await supabase
@@ -200,19 +194,17 @@ export async function POST(request: NextRequest) {
     const transformedInvestment = {
       id: newInvestment.id,
       userId: newInvestment.userid,
-      type: newInvestment.investmenttype,
+      type: newInvestment.type, // Use type directly
       symbol: newInvestment.symbol || '',
       name: newInvestment.name,
       amount: newInvestment.amount,
-      buyPrice: newInvestment.purchaseprice,
-      currentPrice: newInvestment.currentprice,
-      currency: newInvestment.category || 'USD',
-      buyDate: newInvestment.purchasedate ? new Date(newInvestment.purchasedate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-      notes: newInvestment.description,
-      createdAt: newInvestment.createdat,
-      updatedAt: newInvestment.updatedat,
-      quantity: newInvestment.quantity,
-      category: newInvestment.category
+      buyPrice: newInvestment.buyprice, // Map from Supabase field
+      currentPrice: newInvestment.currentprice, // Map from Supabase field
+      currency: newInvestment.symbol?.split('/')[0] || 'USD',
+      buyDate: newInvestment.buydate ? new Date(newInvestment.buydate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+      notes: newInvestment.notes,
+      createdAt: newInvestment.createdat, // Map from Supabase field
+      updatedAt: newInvestment.updatedat // Map from Supabase field
     }
 
     return NextResponse.json({ 

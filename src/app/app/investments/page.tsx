@@ -547,66 +547,35 @@ export default function InvestmentsPage() {
   }
 
   // Load historical price for investment
-  const fetchHistoricalPrice = async (date: string, currencyCode: string, type: 'currency' | 'crypto') => {
+  const fetchHistoricalPrice = async (date: string, currencyCode: string, type?: 'currency' | 'crypto') => {
     setIsLoadingHistorical(true)
     try {
-      console.log(`🔍 Fetching historical price for ${currencyCode} on ${date} (type: ${type})`)
+      console.log(`🔍 Fetching historical price for ${currencyCode} on ${date}`)
       
-      let response
+      // Default to currency type if not specified
+      const investmentType = type || getInvestmentCategory(currencyCode)
       
-      if (type === 'crypto') {
-        // Use unified historical API for crypto
-        response = await fetch(`/api/historical?date=${date}&cryptoId=${currencyCode.toLowerCase()}&type=crypto`)
-      } else {
-        // Use unified historical API for currency
-        response = await fetch(`/api/historical?date=${date}&type=currency`)
-      }
+      const response = await fetch(`/api/historical?date=${date}&type=${investmentType}&symbol=${currencyCode}`)
       
       const result = await response.json()
       
       console.log(`📊 Historical API response:`, {
         success: result.success,
-        dataLength: result.data?.length,
+        hasData: !!result.data,
         currencyCode,
-        type,
+        type: investmentType,
         date,
-        sampleData: result.data?.slice(0, 2)
       })
       
-      if (result.success && result.data && result.data.length > 0) {
-        // Find the specific item in the data
-        let historicalItem
-        if (type === 'crypto') {
-          historicalItem = result.data.find((c: any) => c.symbol.toLowerCase() === currencyCode.toLowerCase())
-        } else {
-          // For currency, try exact match first, then try alternative formats
-          historicalItem = result.data.find((c: any) => c.symbol === currencyCode)
-          
-          if (!historicalItem) {
-            // Try with common variations
-            const variations = [
-              currencyCode,
-              `${currencyCode}/TRY`,
-              currencyCode.replace('/TRY', ''),
-              currencyCode.replace('TRY/', '')
-            ]
-            
-            for (const variation of variations) {
-              historicalItem = result.data.find((c: any) => c.symbol === variation)
-              if (historicalItem) {
-                console.log(`✅ Found currency using variation: ${variation}`)
-                break
-              }
-            }
-          }
-        }
+      if (result.success && result.data) {
+        // For the new API structure, data is a single object, not an array
+        const historicalItem = result.data
         
-        if (historicalItem) {
+        if (historicalItem && historicalItem.price) {
           setHistoricalPrice(historicalItem.price)
-          console.log(`✅ Historical price found for ${currencyCode}: ${type === 'crypto' ? '$' : '₺'}${historicalItem.price}`)
+          console.log(`✅ Historical price found for ${currencyCode}: ₺${historicalItem.price}`)
         } else {
-          console.warn(`❌ No historical price found for ${currencyCode} in ${result.data.length} items`)
-          console.log(`Available symbols:`, result.data.map((c: any) => c.symbol))
+          console.warn(`❌ No historical price found for ${currencyCode}`)
           setHistoricalPrice(null)
         }
       } else {
@@ -795,7 +764,9 @@ export default function InvestmentsPage() {
     // Fetch historical price for the selected date
     if (investmentForm.date !== new Date().toISOString().split('T')[0]) {
       const currencyType = getInvestmentCategory(currency.symbol)
-      fetchHistoricalPrice(investmentForm.date, currency.symbol, currencyType)
+      // Extract currency code from symbol (USD from USD/TRY, EUR from EUR/TRY, etc.)
+      const currencyCode = currency.symbol.split('/')[0]
+      fetchHistoricalPrice(investmentForm.date, currencyCode, currencyType)
     } else {
       setHistoricalPrice(null)
     }
@@ -1389,7 +1360,9 @@ export default function InvestmentsPage() {
                   } else {
                     // Fetch historical price for new date
                     if (selectedCurrency && newDate !== new Date().toISOString().split('T')[0]) {
-                      fetchHistoricalPrice(newDate, selectedCurrency.symbol)
+                      // Extract currency code from symbol (USD from USD/TRY, EUR from EUR/TRY, etc.)
+                      const currencyCode = selectedCurrency.symbol.split('/')[0]
+                      fetchHistoricalPrice(newDate, currencyCode)
                     } else {
                       setHistoricalPrice(null)
                     }

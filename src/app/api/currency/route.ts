@@ -13,64 +13,40 @@ interface CurrencyData {
     forexSelling: number;
 }
 
+interface TCMBXmlCurrency {
+    Kod: string;
+    Isim: string;
+    ForexBuying: string;
+    ForexSelling: string;
+}
+
 export async function GET(request: NextRequest) {
   try {
     console.log('=== CURRENCY API START ===')
-    console.log('📊 Fetching TCMB data...')
+    console.log('📊 Fetching TCMB data from XML...')
     
-    const today = new Date().toISOString().split('T')[0].replace(/-/g, '');
-    const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0].replace(/-/g, '');
+    // TCMB XML API - EVDS yerine doğrudan XML endpoint kullanıyoruz
+    const xmlUrl = "https://www.tcmb.gov.tr/kurlar/today.xml"
     
-    // TCMB EVDS API - Correct format for exchange rates
-    const baseUrl = "https://evds2.tcmb.gov.tr/service/evds/"
-    const seriesCodes = [
-      'TP.DK.USD.A.YTL',  // USD Buying
-      'TP.DK.USD.S.YTL',  // USD Selling
-      'TP.DK.EUR.A.YTL',  // EUR Buying  
-      'TP.DK.EUR.S.YTL',  // EUR Selling
-      'TP.DK.GBP.A.YTL',  // GBP Buying
-      'TP.DK.GBP.S.YTL',  // GBP Selling
-      'TP.DK.CHF.A.YTL',  // CHF Buying
-      'TP.DK.CHF.S.YTL',  // CHF Selling
-      'TP.DK.JPY.A.YTL',  // JPY Buying
-      'TP.DK.JPY.S.YTL',  // JPY Selling
-      'TP.DK.SAR.A.YTL',  // SAR Buying
-      'TP.DK.SAR.S.YTL',  // SAR Selling
-      'TP.DK.AED.A.YTL',  // AED Buying
-      'TP.DK.AED.S.YTL',  // AED Selling
-      'TP.DK.CAD.A.YTL',  // CAD Buying
-      'TP.DK.CAD.S.YTL',  // CAD Selling
-      'TP.DK.AUD.A.YTL',  // AUD Buying
-      'TP.DK.AUD.S.YTL',  // AUD Selling
-      'TP.DK.RUB.A.YTL',  // RUB Buying
-      'TP.DK.RUB.S.YTL',  // RUB Selling
-      'TP.DK.CNY.A.YTL',  // CNY Buying
-      'TP.DK.CNY.S.YTL',  // CNY Selling
-      'TP.DK.NOK.A.YTL',  // NOK Buying
-      'TP.DK.NOK.S.YTL'   // NOK Selling
-    ].join('-');
+    console.log('🔍 Fetching from TCMB XML:', xmlUrl)
     
-    const apiUrl = `${baseUrl}series=${seriesCodes}&startDate=${yesterday}&endDate=${today}&type=json&key=${TCMB_API_KEY}`;
-    
-    console.log('🔍 Fetching from TCMB:', apiUrl)
-    
-    const response = await fetch(apiUrl, {
+    const response = await fetch(xmlUrl, {
       method: 'GET',
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; TCMB-Client/1.0)',
-        'Accept': 'application/json',
+        'Accept': 'application/xml,text/xml',
         'Accept-Language': 'tr-TR,tr;q=0.9,en;q=0.8',
       },
       cache: 'no-store',
       timeout: 10000
     });
 
-    console.log('📡 TCMB Response status:', response.status)
+    console.log('📡 TCMB XML Response status:', response.status)
     
     if (!response.ok) {
-      console.error('❌ TCMB API error:', response.status, response.statusText);
+      console.error('❌ TCMB XML API error:', response.status, response.statusText);
       const errorText = await response.text();
-      console.error('❌ TCMB Error response:', errorText);
+      console.error('❌ TCMB XML Error response:', errorText);
       
       // Return updated current rates instead of old fallback
       return NextResponse.json({
@@ -79,15 +55,15 @@ export async function GET(request: NextRequest) {
         cached: false,
         lastUpdated: new Date().toISOString(),
         fallback: true,
-        error: `TCMB API Error: ${response.status} ${response.statusText} - Using current rates`
+        error: `TCMB XML API Error: ${response.status} ${response.statusText} - Using current rates`
       });
     }
 
-    const data = await response.json();
-    console.log('📊 TCMB Response structure:', typeof data, data ? Object.keys(data) : 'null');
+    const xmlText = await response.text();
+    console.log('📊 TCMB XML Response length:', xmlText.length);
     
-    if (!data || !data.rows || data.rows.length === 0) {
-      console.warn('⚠️ No data from TCMB, using current rates');
+    if (!xmlText || xmlText.length === 0) {
+      console.warn('⚠️ No XML data from TCMB, using current rates');
       return NextResponse.json({
         success: true,
         data: getFallbackData(),
@@ -97,70 +73,11 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Process TCMB data
-    const currencyData: CurrencyData[] = [];
-    const currencyNames: Record<string, string> = {
-      'USD': 'Amerikan Doları',
-      'EUR': 'Euro', 
-      'GBP': 'İngiliz Sterlini',
-      'CHF': 'İsviçre Frangı',
-      'JPY': 'Japon Yeni',
-      'SAR': 'Suudi Arabistan Riyali',
-      'AED': 'BAE Dirhemi',
-      'CAD': 'Kanada Doları',
-      'AUD': 'Avustralya Doları',
-      'RUB': 'Rus Rublesi',
-      'CNY': 'Çin Yuanı',
-      'NOK': 'Norveç Kronu'
-    };
-
-    // Get the latest row (most recent data)
-    const latestRow = data.rows[data.rows.length - 1];
-    console.log('📈 Latest TCMB data row:', latestRow);
-
-    const currencies = ['USD', 'EUR', 'GBP', 'CHF', 'JPY', 'SAR', 'AED', 'CAD', 'AUD', 'RUB', 'CNY', 'NOK'];
+    // Parse XML data
+    const currencyData = parseTCMBXml(xmlText);
     
-    currencies.forEach((currency, index) => {
-      const buyingIndex = index * 2;     // Buying rate index
-      const sellingIndex = index * 2 + 1; // Selling rate index
-      
-      if (latestRow[buyingIndex] && latestRow[sellingIndex]) {
-        const forexBuying = parseFloat(latestRow[buyingIndex]) || 0;
-        const forexSelling = parseFloat(latestRow[sellingIndex]) || 0;
-        
-        // Skip if both values are 0 or null
-        if (forexBuying === 0 && forexSelling === 0) {
-          console.warn(`⚠️ No valid data for ${currency}`);
-          return;
-        }
-        
-        const price = (forexBuying + forexSelling) / 2;
-        
-        // Generate small random change for demo (in real app, calculate from previous day)
-        const changePercent = (Math.random() - 0.5) * 2; // -1% to +1%
-        const change = price * (changePercent / 100);
-
-        currencyData.push({
-          symbol: `${currency}/TRY`,
-          name: currencyNames[currency] || currency,
-          price: price,
-          change: change,
-          changePercent: changePercent,
-          forexBuying: forexBuying,
-          forexSelling: forexSelling
-        });
-        
-        console.log(`✅ ${currency}: Buying=${forexBuying}, Selling=${forexSelling}, Price=${price}`);
-      } else {
-        console.warn(`⚠️ Missing data for ${currency} at indices ${buyingIndex}, ${sellingIndex}`);
-      }
-    });
-
-    console.log('✅ TCMB data processed successfully:', currencyData.length, 'currencies');
-    console.log('=== CURRENCY API END ===');
-
     if (currencyData.length === 0) {
-      console.warn('⚠️ No valid currency data processed, using current rates');
+      console.warn('⚠️ No valid currency data parsed from XML, using current rates');
       return NextResponse.json({
         success: true,
         data: getFallbackData(),
@@ -169,13 +86,16 @@ export async function GET(request: NextRequest) {
         fallback: true
       });
     }
+
+    console.log('✅ TCMB XML data processed successfully:', currencyData.length, 'currencies');
+    console.log('=== CURRENCY API END ===');
 
     return NextResponse.json({
       success: true,
       data: currencyData,
       cached: false,
       lastUpdated: new Date().toISOString(),
-      source: 'TCMB'
+      source: 'TCMB_XML'
     });
 
   } catch (error) {
@@ -192,6 +112,71 @@ export async function GET(request: NextRequest) {
       error: (error as Error).message
     });
   }
+}
+
+function parseTCMBXml(xmlText: string): CurrencyData[] {
+  const currencyData: CurrencyData[] = [];
+  
+  try {
+    // Simple XML parser for TCMB data
+    const currencyRegex = /<Currency[^>]*Kod="([^"]+)"[^>]*>[\s\S]*?<Isim>([^<]+)<\/Isim>[\s\S]*?<ForexBuying>([^<]*)<\/ForexBuying>[\s\S]*?<ForexSelling>([^<]*)<\/ForexSelling>/g;
+    
+    const currencyNames: Record<string, string> = {
+      'USD': 'Amerikan Doları',
+      'EUR': 'Euro', 
+      'GBP': 'İngiliz Sterlini',
+      'CHF': 'İsviçre Frangı',
+      'JPY': 'Japon Yeni',
+      'SAR': 'Suudi Arabistan Riyali',
+      'AED': 'BAE Dirhemi',
+      'CAD': 'Kanada Doları',
+      'AUD': 'Avustralya Doları',
+      'RUB': 'Rus Rublesi',
+      'CNY': 'Çin Yuanı',
+      'NOK': 'Norveç Kronu'
+    };
+
+    let match;
+    const targetCurrencies = ['USD', 'EUR', 'GBP', 'CHF', 'JPY', 'SAR', 'AED', 'CAD', 'AUD', 'RUB', 'CNY', 'NOK'];
+    
+    while ((match = currencyRegex.exec(xmlText)) !== null) {
+      const [_, currencyCode, currencyName, forexBuyingStr, forexSellingStr] = match;
+      
+      if (targetCurrencies.includes(currencyCode)) {
+        const forexBuying = parseFloat(forexBuyingStr.replace(',', '.')) || 0;
+        const forexSelling = parseFloat(forexSellingStr.replace(',', '.')) || 0;
+        
+        // Skip if both values are 0 or null
+        if (forexBuying === 0 && forexSelling === 0) {
+          console.warn(`⚠️ No valid data for ${currencyCode}`);
+          continue;
+        }
+        
+        const price = (forexBuying + forexSelling) / 2;
+        
+        // Generate small random change for demo (in real app, calculate from previous day)
+        const changePercent = (Math.random() - 0.5) * 2; // -1% to +1%
+        const change = price * (changePercent / 100);
+
+        currencyData.push({
+          symbol: `${currencyCode}/TRY`,
+          name: currencyNames[currencyCode] || currencyName,
+          price: price,
+          change: change,
+          changePercent: changePercent,
+          forexBuying: forexBuying,
+          forexSelling: forexSelling
+        });
+        
+        console.log(`✅ ${currencyCode}: Buying=${forexBuying}, Selling=${forexSelling}, Price=${price}`);
+      }
+    }
+    
+  } catch (error) {
+    console.error('❌ XML parsing error:', error);
+  }
+  
+  return currencyData;
 }
 
 function getFallbackData(): CurrencyData[] {
