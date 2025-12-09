@@ -5081,3 +5081,370 @@ Not an admin route or login page, proceeding
 Pathname: /_next/static/css/app/layout.css
 Method: GET
 Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+ ○ Compiling /api/crypto ...
+ ✓ Compiled /api/crypto in 954ms (1740 modules)
+ ✓ Compiled (1742 modules)
+=== CRYPTO API START ===
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.A.YTL-TP.DK.USD.S.YTL-TP.DK.EUR.A.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.A.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.A.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.A.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.A.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.A.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.A.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.A.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.A.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.A.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.A.YTL-TP.DK.NOK.S.YTL&startDate=20251208&endDate=20251209&type=json&key=vidaQMAA0C
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 1386ms
+ GET /app/investments 200 in 96ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+📡 TCMB Response status: 403
+❌ TCMB API error: 403 
+❌ TCMB Error response: <!doctype html><html lang="en"><head><title>HTTP Status 403 – Forbidden</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 403 – Forbidden</h1></body></html>
+ GET /api/currency 200 in 2142ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 261ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/signin
+Method: POST
+API route, skipping middleware
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Starting signin for email: noyan4job@gmail.com
+AuthService: Signin successful for: noyan4job@gmail.com
+ POST /api/auth/signin 200 in 2086ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 85ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 1157ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 137ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 148ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 153ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 137ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 143ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 144ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 139ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 537ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 83ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/investments/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 158ms
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 349ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.A.YTL-TP.DK.USD.S.YTL-TP.DK.EUR.A.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.A.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.A.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.A.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.A.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.A.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.A.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.A.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.A.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.A.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.A.YTL-TP.DK.NOK.S.YTL&startDate=20251208&endDate=20251209&type=json&key=vidaQMAA0C
+=== CRYPTO API START ===
+AuthService: Verifying token
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 1313ms
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 1261ms
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 1345ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== CRYPTO API START ===
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 115ms
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 144ms
+📡 TCMB Response status: 403
+❌ TCMB API error: 403 
+❌ TCMB Error response: <!doctype html><html lang="en"><head><title>HTTP Status 403 – Forbidden</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 403 – Forbidden</h1></body></html>
+ GET /api/currency 200 in 2317ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.A.YTL-TP.DK.USD.S.YTL-TP.DK.EUR.A.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.A.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.A.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.A.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.A.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.A.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.A.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.A.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.A.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.A.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.A.YTL-TP.DK.NOK.S.YTL&startDate=20251208&endDate=20251209&type=json&key=vidaQMAA0C
+📡 TCMB Response status: 403
+❌ TCMB API error: 403 
+❌ TCMB Error response: <!doctype html><html lang="en"><head><title>HTTP Status 403 – Forbidden</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 403 – Forbidden</h1></body></html>
+ GET /api/currency 200 in 255ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ GET /api/auth/me 401 in 25ms
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/7108fa2a2d1f44d9.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 76ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.7108fa2a2d1f44d9.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.7108fa2a2d1f44d9.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/757e3da320479fcb.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled /api/crypto in 3.3s (3316 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.757e3da320479fcb.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/app/investments/page.757e3da320479fcb.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 178ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.757e3da320479fcb.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled /api/currency in 284ms (1740 modules)
+ ✓ Compiled (1742 modules)
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.A.YTL-TP.DK.USD.S.YTL-TP.DK.EUR.A.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.A.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.A.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.A.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.A.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.A.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.A.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.A.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.A.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.A.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.A.YTL-TP.DK.NOK.S.YTL&startDate=20251208&endDate=20251209&type=json&key=vidaQMAA0C
+=== CRYPTO API START ===
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 800ms
