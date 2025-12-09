@@ -252,9 +252,41 @@ export default function InvestmentsPage() {
         fetch('/api/crypto')
       ])
       
-      const investmentsResult = await investmentsResponse.json()
-      const currencyResult = await currencyResponse.json()
-      const cryptoResult = await cryptoResponse.json()
+      // Check if investments response is OK and is JSON
+      if (!investmentsResponse.ok) {
+        console.error('Investments API returned error status:', investmentsResponse.status)
+        setInvestments([])
+        return
+      }
+      
+      // Check content type to ensure it's JSON
+      const contentType = investmentsResponse.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error('Investments API returned non-JSON response:', contentType)
+        setInvestments([])
+        return
+      }
+      
+      let investmentsResult, currencyResult, cryptoResult
+      
+      try {
+        investmentsResult = await investmentsResponse.json()
+        currencyResult = await currencyResponse.json()
+        cryptoResult = await cryptoResponse.json()
+      } catch (parseError) {
+        console.error('Failed to parse API responses as JSON:', parseError)
+        
+        // Try to get the response text for debugging
+        try {
+          const responseText = await investmentsResponse.text()
+          console.error('Investments API response text:', responseText.substring(0, 500))
+        } catch (textError) {
+          console.error('Could not get response text:', textError)
+        }
+        
+        setInvestments([])
+        return
+      }
       
       console.log('Investments API response:', investmentsResult)
       console.log('Currency API response:', currencyResult)

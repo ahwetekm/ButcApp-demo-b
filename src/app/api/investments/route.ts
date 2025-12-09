@@ -8,32 +8,52 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Authentication middleware
 async function authenticate(request: NextRequest) {
-  const token = request.cookies.get('auth-token')?.value || 
-                request.headers.get('authorization')?.replace('Bearer ', '') ||
-                request.nextUrl.searchParams.get('token')
-  
-  if (!token) {
-    return { error: 'Unauthorized', status: 401 }
-  }
+  try {
+    console.log('🔐 Starting authentication process')
+    
+    const token = request.cookies.get('auth-token')?.value || 
+                  request.headers.get('authorization')?.replace('Bearer ', '') ||
+                  request.nextUrl.searchParams.get('token')
+    
+    console.log('Token found:', !!token)
+    
+    if (!token) {
+      console.log('❌ No token provided')
+      return { error: 'Unauthorized', status: 401 }
+    }
 
-  const user = await AuthService.verifyToken(token)
-  if (!user) {
-    return { error: 'Unauthorized', status: 401 }
-  }
+    console.log('🔍 Verifying token...')
+    const user = await AuthService.verifyToken(token)
+    
+    if (!user) {
+      console.log('❌ Invalid token')
+      return { error: 'Unauthorized', status: 401 }
+    }
 
-  return { user, token }
+    console.log('✅ Authentication successful for:', user.email)
+    return { user, token }
+  } catch (error) {
+    console.error('❌ Authentication error:', error)
+    return { error: 'Authentication failed', status: 500 }
+  }
 }
 
 // GET - Fetch investments
 export async function GET(request: NextRequest) {
   try {
+    console.log('=== INVESTMENTS API START ===')
+    
     const auth = await authenticate(request)
     if (auth.error) {
+      console.log('❌ Authentication failed:', auth.error)
       return NextResponse.json({ error: auth.error }, { status: auth.status })
     }
 
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('userId') || auth.user.id
+
+    console.log('✅ Authentication successful for user:', auth.user.email)
+    console.log('📊 Fetching investments for userId:', userId)
 
     // Fetch investments from database
     const { data: investments, error } = await supabase
@@ -44,12 +64,15 @@ export async function GET(request: NextRequest) {
       .order('createdat', { ascending: false })
 
     if (error) {
-      console.error('Investment fetch error:', error)
+      console.error('❌ Investment fetch error:', error)
       return NextResponse.json({ 
         success: false, 
-        error: 'Failed to fetch investments' 
+        error: 'Failed to fetch investments',
+        details: error.message 
       }, { status: 500 })
     }
+
+    console.log('✅ Investments fetched successfully:', investments?.length || 0, 'items')
 
     // Transform data to match frontend interface
     const transformedInvestments = (investments || []).map(inv => ({
@@ -70,6 +93,9 @@ export async function GET(request: NextRequest) {
       category: inv.category
     }))
 
+    console.log('✅ Investments transformed successfully')
+    console.log('=== INVESTMENTS API END ===')
+
     return NextResponse.json({
       success: true,
       data: transformedInvestments,
@@ -77,10 +103,16 @@ export async function GET(request: NextRequest) {
     })
 
   } catch (error) {
-    console.error('Investment API error:', error)
+    console.error('❌ Investment API error:', error)
+    console.error('Error details:', {
+      message: (error as Error).message,
+      stack: (error as Error).stack
+    })
+    
     return NextResponse.json({ 
       success: false, 
-      error: 'Internal server error' 
+      error: 'Internal server error',
+      details: (error as Error).message 
     }, { status: 500 })
   }
 }
