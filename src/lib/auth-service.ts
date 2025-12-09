@@ -281,13 +281,33 @@ export class AuthService {
     try {
       const authHeader = request.headers.get('authorization')
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        console.log('AuthService: No auth header or invalid format')
         return null
       }
 
       const token = authHeader.substring(7)
-      return await this.verifyToken(token)
+      if (!token) {
+        console.log('AuthService: No token provided')
+        return null
+      }
+
+      console.log('AuthService: Verifying token:', token.substring(0, 20) + '...')
+      const user = await this.verifyToken(token)
+      
+      if (user) {
+        console.log('AuthService: Token verification successful for user:', user.email)
+      } else {
+        console.log('AuthService: Token verification failed')
+      }
+      
+      return user
     } catch (error) {
       console.error('AuthService: Error getting user from request:', error)
+      console.error('AuthService: Error details:', {
+        message: (error as Error).message,
+        stack: (error as Error).stack,
+        authHeader: request.headers.get('authorization')
+      })
       return null
     }
   }
