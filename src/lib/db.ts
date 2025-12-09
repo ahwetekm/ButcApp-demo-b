@@ -16,8 +16,9 @@ const getDatabasePath = () => {
       const dbDir = path.dirname(dbPath);
       try {
         require('fs').mkdirSync(dbDir, { recursive: true });
+        console.log('Database directory created/verified:', dbDir);
       } catch (error) {
-        // Directory might already exist, that's fine
+        console.log('Database directory already exists:', dbDir);
       }
       
       return dbPath;
@@ -44,16 +45,42 @@ let sqlite: Database.Database;
 
 try {
   const dbPath = getDatabasePath();
-  console.log('Connecting to database at:', dbPath);
+  console.log('=== DATABASE CONNECTION DEBUG ===');
+  console.log('Environment:', process.env.NODE_ENV);
+  console.log('Database URL:', process.env.DATABASE_URL);
+  console.log('Resolved Path:', dbPath);
+  console.log('Current Working Directory:', process.cwd());
+  
+  // Check if database file exists
+  const fs = require('fs');
+  const dbExists = fs.existsSync(dbPath);
+  console.log('Database file exists:', dbExists);
+  
+  if (!dbExists) {
+    console.log('Database file does not exist, will be created automatically');
+  }
   
   sqlite = new Database(dbPath);
   
   // Enable foreign keys
   sqlite.pragma('foreign_keys = ON');
   
+  // Test database connection
+  try {
+    const testResult = sqlite.prepare('SELECT 1 as test').get();
+    console.log('Database test query successful:', testResult);
+  } catch (testError) {
+    console.error('Database test query failed:', testError);
+  }
+  
   console.log('Database connected successfully');
+  console.log('=== END DATABASE DEBUG ===');
 } catch (error) {
-  console.error('Failed to connect to database:', error);
+  console.error('=== DATABASE CONNECTION ERROR ===');
+  console.error('Error:', error);
+  console.error('Error message:', (error as Error).message);
+  console.error('Error stack:', (error as Error).stack);
+  console.error('=== END DATABASE ERROR ===');
   
   // Fallback to local development database
   try {
