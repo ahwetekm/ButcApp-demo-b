@@ -158,8 +158,8 @@ export default function ServerStatusPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="text-2xl font-bold">{systemInfo.cpu.usage}%</div>
-              <Progress value={systemInfo.cpu.usage} className="w-full" />
+              <div className="text-2xl font-bold">{systemInfo.cpu?.usage || 0}%</div>
+              <Progress value={systemInfo.cpu?.usage || 0} className="w-full" />
               <p className="text-xs text-muted-foreground">İşlemci yükü</p>
             </div>
           </CardContent>

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyAdminToken } from '@/lib/jwt'
+import { cpus, loadavg } from 'os'
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,6 +18,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
+    // Get CPU information
+    const cpuCount = cpus().length
+    const loadAvg = loadavg()
+    const cpuUsage = Math.min(95, Math.round((loadAvg[0] / cpuCount) * 100))
+
     // Get server information
     const serverInfo = {
       status: 'healthy',
@@ -28,6 +34,11 @@ export async function GET(request: NextRequest) {
       arch: process.arch,
       environment: process.env.NODE_ENV || 'development',
       nextVersion: '15.5.7',
+      cpu: {
+        count: cpuCount,
+        usage: cpuUsage,
+        loadAverage: loadAvg[0].toFixed(2)
+      },
       database: {
         status: 'connected',
         provider: 'supabase'
@@ -47,6 +58,10 @@ export async function GET(request: NextRequest) {
 
   } catch (error) {
     console.error('System status API error:', error)
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack
+    })
     return NextResponse.json({
       error: 'Internal server error'
     }, { status: 500 })
