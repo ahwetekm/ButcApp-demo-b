@@ -176,3 +176,621 @@ Fetching transactions for userId: user_1765294651433_fk5llgnqc {
 }
 Transactions fetched successfully: 2
  GET /api/data/transactions 200 in 299ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1499ms (1521 modules)
+ GET /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 404 in 1809ms
+ GET /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 404 in 40ms
+ GET /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 404 in 47ms
+ ✓ Compiled in 300ms (793 modules)
+ ✓ Compiled in 301ms (957 modules)
+ ✓ Compiled /api/data/investments in 301ms (1019 modules)
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/data/investments/route.ts:19:34)
+    at GET (src/app/api/data/investments/route.ts:30:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ GET /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 459ms
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/data/investments/route.ts:19:34)
+    at POST (src/app/api/data/investments/route.ts:116:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ POST /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 69ms
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/data/investments/route.ts:19:34)
+    at POST (src/app/api/data/investments/route.ts:116:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ POST /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 74ms
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/data/investments/route.ts:19:34)
+    at GET (src/app/api/data/investments/route.ts:30:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ GET /api/data/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 63ms
+ ✓ Compiled in 192ms (789 modules)
+ ✓ Compiled in 115ms (1201 modules)
+ ✓ Compiled in 171ms (789 modules)
+ ✓ Compiled in 111ms (957 modules)
+ ✓ Compiled /api/investments in 139ms (1019 modules)
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/investments/route.ts:19:34)
+    at GET (src/app/api/investments/route.ts:30:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ GET /api/investments?userId=demo_user&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 262ms
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/investments/route.ts:19:34)
+    at POST (src/app/api/investments/route.ts:91:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ POST /api/investments?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 56ms
+AuthService: Verifying token
+AuthService: Token verification error: JWSInvalid: Failed to base64url decode the signature
+    at AuthService.verifyToken (src/lib/auth-service.ts:241:42)
+    at authenticate (src/app/api/investments/route.ts:19:34)
+    at GET (src/app/api/investments/route.ts:30:24)
+  239 |       console.log('AuthService: Verifying token')
+  240 |       
+> 241 |       const { payload } = await jwtVerify(token, JWT_SECRET)
+      |                                          ^
+  242 |       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
+  243 |       
+  244 |       // Find user in database {
+  code: 'ERR_JWS_INVALID'
+}
+ GET /api/investments?userId=demo_user&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZW1vX3VzZXIiLCJpYXQiOjE3NjUyNzczMjEsImV4cCI6MTc2NTM2MzcyMX0.FakeToken 401 in 92ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ ○ Compiling /app/investments ...
+ ✓ Compiled /app/investments in 2.3s (1885 modules)
+ GET /app/investments 200 in 2704ms
+ ✓ Compiled /_not-found in 350ms (1890 modules)
+ GET /api/auth/status 404 in 558ms
+ ✓ Compiled in 259ms (825 modules)
+ ✓ Compiled in 145ms (825 modules)
+ ✓ Compiled in 211ms (2072 modules)
+ ✓ Compiled /api/auth/status in 252ms (1892 modules)
+ GET /api/auth/status 401 in 334ms
+ GET /api/blog?limit=12 404 in 157ms
+ ✓ Compiled in 465ms (989 modules)
+ ✓ Compiled in 147ms (821 modules)
+ ✓ Compiled in 98ms (989 modules)
+ ✓ Compiled in 147ms (821 modules)
+ ✓ Compiled in 128ms (989 modules)
+ ✓ Compiled /api/blog in 323ms (982 modules)
+Blog posts fetch error: {
+  code: '42703',
+  details: null,
+  hint: 'Perhaps you meant to reference the column "blog_posts.createdat".',
+  message: 'column blog_posts.created_at does not exist'
+}
+ GET /api/blog?limit=12 500 in 955ms
+ ✓ Compiled /api/blog/categories in 259ms (984 modules)
+ GET /api/blog/categories 200 in 651ms
+Blog post creation error: {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'author_avatar' column of 'blog_posts' in the schema cache"
+}
+ POST /api/blog 500 in 580ms
+Blog post creation error: {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'author_avatar' column of 'blog_posts' in the schema cache"
+}
+ POST /api/blog 500 in 168ms
+Blog posts fetch error: {
+  code: '42703',
+  details: null,
+  hint: 'Perhaps you meant to reference the column "blog_posts.createdat".',
+  message: 'column blog_posts.created_at does not exist'
+}
+ GET /api/blog?limit=12 500 in 156ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /blog
+Method: GET
+Not an admin route or login page, proceeding
+ ○ Compiling /blog ...
+ ✓ Compiled /blog in 1850ms (1816 modules)
+ ✓ Compiled /api/blog/categories in 169ms (986 modules)
+Blog posts fetch error: {
+  code: '42703',
+  details: null,
+  hint: 'Perhaps you meant to reference the column "blog_posts.createdat".',
+  message: 'column blog_posts.created_at does not exist'
+}
+ GET /api/blog?limit=12 500 in 239ms
+Blog API response error: 500
+ GET /api/blog/categories 200 in 399ms
+ GET /blog 200 in 2663ms
+ ✓ Compiled in 361ms (1832 modules)
+ ✓ Compiled in 237ms (1832 modules)
+ ✓ Compiled in 447ms (1832 modules)
+ ✓ Compiled in 248ms (1832 modules)
+ ✓ Compiled in 125ms (846 modules)
+ ✓ Compiled in 148ms (846 modules)
+ ✓ Compiled in 152ms (846 modules)
+ GET /api/blog?limit=12 200 in 184ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /blog
+Method: GET
+Not an admin route or login page, proceeding
+ GET /api/blog?limit=12 200 in 134ms
+ GET /api/blog/categories 200 in 355ms
+ GET /blog 200 in 647ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /blog
+Method: GET
+Not an admin route or login page, proceeding
+ GET /api/blog/categories 200 in 140ms
+ GET /api/blog?limit=12 200 in 142ms
+ GET /blog 200 in 224ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: false
+Not an admin route or login page, proceeding
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login in 1287ms (1614 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 1612ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 401 in 647ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/posts
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/posts 401 in 253ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/categories
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/categories 401 in 264ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats 401 in 271ms
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ POST /api/auth/signin 400 in 460ms
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats
+Method: GET
+API route, skipping middleware
+Admin API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats 200 in 47ms
+ ✓ Compiled /api/auth/signin in 352ms (956 modules)
+ ✓ Compiled in 186ms (854 modules)
+ ✓ Compiled in 218ms (854 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+Admin Users API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 200 in 128ms
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users ...
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/posts
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+Admin Posts API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/posts 200 in 98ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/categories
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+Admin Categories API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/categories 200 in 85ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 206ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/posts
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/posts
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/categories
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/categories
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ✓ Compiled / in 1532ms (910 modules)
+ GET / 200 in 1883ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 50ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: false
+Not an admin route or login page, proceeding
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login in 262ms (923 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 514ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth in 120ms (1009 modules)
+Admin Auth API: Login attempt { username: 'noyan4job@gmail.com', hasPassword: true }
+Admin Auth API: Invalid credentials
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 401 in 228ms
+ ⚠ Cross origin request detected from preview-chat-52462d31-6021-41a9-9f9d-a484581c6f0e.space.z.ai to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 19ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 20ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 14ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'wrong', hasPassword: true }
+Admin Auth API: Invalid credentials
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 401 in 13ms
+ ✓ Compiled in 520ms (1863 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: false
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 166ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 169ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+Admin Auth API: Response {"success":true,"data":{"user":{"id":"admin","username":"admin","email":"admin@butcapp.com","name":"admin","role":"admin","lastLogin":"2025-12-09T17:20:03.066Z"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYnV0Y2FwcC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjUzMDA4MDMsImV4cCI6MTc2NTM4NzIwM30.xlWxt2OXgz4zzwZaCZQr_xQlr-QbeAOqwyM_PSotTHs"}}
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 32ms
+ ⨯ ./src/contexts/AdminAuthContext.tsx
+Error:   [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/z/my-project/src/contexts/AdminAuthContext.tsx[0m:192:1]
+ [2m189[0m |     }
+ [2m190[0m |   }
+ [2m191[0m | 
+ [2m192[0m |   const logout = () => {
+     : [35;1m  ^[0m
+ [2m193[0m |     setUser(null)
+ [2m194[0m |     setToken(null)
+ [2m195[0m |     localStorage.removeItem('adminUser')
+     `----
+  [31mx[0m 'import', and 'export' cannot be used outside of module code
+     ,-[[36;1;4m/home/z/my-project/src/contexts/AdminAuthContext.tsx[0m:223:1]
+ [2m220[0m |   )
+ [2m221[0m | }
+ [2m222[0m | 
+ [2m223[0m | export function useAuth() {
+     : [35;1m^^^^^^[0m
+ [2m224[0m |   const context = useContext(AuthContext)
+ [2m225[0m |   if (context === undefined) {
+ [2m226[0m |     throw new Error('useAuth must be used within an AuthProvider')
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/contexts/AdminAuthContext.tsx
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/layout.tsx

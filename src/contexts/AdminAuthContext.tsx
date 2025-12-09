@@ -125,25 +125,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Gerçek auth endpoint'ini dene
       console.log('Trying auth endpoint...');
       const apiPath = '/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth';
-      const response = await fetch(apiPath, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password, captchaAnswer: captchaAnswer?.trim() || null })
-      });
+      
+      try {
+        const response = await fetch(apiPath, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password, captchaAnswer: captchaAnswer?.trim() || null }),
+          cache: 'no-store'
+        });
 
-      console.log('Auth response status:', response.status);
-      console.log('Auth response OK:', response.ok);
+        console.log('Auth response status:', response.status);
+        console.log('Auth response OK:', response.ok);
+        console.log('Auth response headers:', response.headers);
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('HTTP Error Response:', errorText);
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
-      }
+        // Response text'ini önce al
+        const responseText = await response.text();
+        console.log('Raw response text:', responseText);
 
-      const data = await response.json()
-      console.log('Response data:', data);
+        if (!response.ok) {
+          console.error('HTTP Error Response:', responseText);
+          throw new Error(`HTTP ${response.status}: ${responseText}`);
+        }
+
+        // JSON parse et
+        let data;
+        try {
+          data = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('JSON Parse Error:', parseError);
+          throw new Error('Invalid JSON response from server');
+        }
+
+        console.log('Parsed response data:', data);
 
       if (data.success) {
         const { user: userData, token } = data.data

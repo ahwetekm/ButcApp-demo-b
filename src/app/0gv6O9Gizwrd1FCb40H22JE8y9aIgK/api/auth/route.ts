@@ -20,7 +20,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: false,
         error: 'Kullanıcı adı veya şifre hatalı'
-      }, { status: 401 })
+      }, { 
+        status: 401,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     }
 
     // Generate JWT token
@@ -42,11 +47,20 @@ export async function POST(request: NextRequest) {
       lastLogin: new Date().toISOString()
     }
 
-    return NextResponse.json({
+    const response = {
       success: true,
       data: {
         user: userData,
         token: token
+      }
+    }
+
+    console.log('Admin Auth API: Response', JSON.stringify(response))
+
+    return NextResponse.json(response, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
       }
     })
 
@@ -55,6 +69,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: false,
       error: 'Giriş sırasında bir hata oluştu'
-    }, { status: 500 })
+    }, { 
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 }
