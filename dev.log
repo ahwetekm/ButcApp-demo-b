@@ -3612,3 +3612,543 @@ Not an admin route or login page, proceeding
 Pathname: /_next/static/css/app/layout.css
 Method: GET
 Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 232ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signup/route.ts
+ ✓ Compiled /api/auth/me in 902ms (1881 modules)
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 1630ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/signin
+Method: POST
+API route, skipping middleware
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Starting signin for email: noyan4job@gmail.com
+AuthService: Signin successful for: noyan4job@gmail.com
+ POST /api/auth/signin 200 in 2110ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 84ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 523ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 147ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 159ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 148ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 143ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 156ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 159ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 153ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/701908744908726b.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/701908744908726b.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ POST /api/admin-access 404 in 2329ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.701908744908726b.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.701908744908726b.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 64ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/investments/page.js
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 45ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+ GET /api/crypto 404 in 198ms
+ POST /api/admin-access 404 in 182ms
+ GET /api/currency 404 in 124ms
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 329ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+ POST /api/admin-access 404 in 94ms
+ GET /api/crypto 404 in 44ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+ GET /api/currency 404 in 45ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 138ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ POST /api/admin-access 404 in 45ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 137ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/signin
+Method: POST
+API route, skipping middleware
+AuthService: Starting signin for email: noyan4job@gmail.com
+AuthService: Signin successful for: noyan4job@gmail.com
+ POST /api/auth/signin 200 in 1204ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 54ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 133ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 146ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 147ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 132ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 130ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 142ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 134ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 132ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ POST /api/admin-access 404 in 44ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 34ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/investments/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ POST /api/admin-access 404 in 47ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 427ms
+ GET /api/currency 404 in 54ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ GET /api/crypto 404 in 96ms
+ POST /api/admin-access 404 in 45ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+ GET /api/currency 404 in 77ms
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 168ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+ GET /api/crypto 404 in 43ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ POST /api/admin-access 404 in 47ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ ✓ Compiled /_not-found in 3.1s (3581 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/d7f1196a12425e12.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 2312ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 2041ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/d7f1196a12425e12.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.d7f1196a12425e12.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.d7f1196a12425e12.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 41ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 28ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.d7f1196a12425e12.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/c7588fb44dc0df62.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.d7f1196a12425e12.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.c7588fb44dc0df62.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/c7588fb44dc0df62.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.c7588fb44dc0df62.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled in 1227ms (3421 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/33f739e69979609a.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 194ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 194ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/33f739e69979609a.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.33f739e69979609a.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.33f739e69979609a.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET /app/investments 200 in 61ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 32ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.33f739e69979609a.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.33f739e69979609a.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/ffa773bbfe8b0ff7.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/ffa773bbfe8b0ff7.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.ffa773bbfe8b0ff7.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.ffa773bbfe8b0ff7.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
