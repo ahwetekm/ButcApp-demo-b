@@ -42,11 +42,22 @@ async function authenticate(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     console.log('=== INVESTMENTS API START ===')
+    console.log('Request URL:', request.url)
+    console.log('Request method:', request.method)
+    console.log('Request headers:', Object.fromEntries(request.headers.entries()))
     
     const auth = await authenticate(request)
     if (auth.error) {
       console.log('❌ Authentication failed:', auth.error)
-      return NextResponse.json({ error: auth.error }, { status: auth.status })
+      return NextResponse.json({ 
+        success: false, 
+        error: auth.error,
+        debug: {
+          url: request.url,
+          method: request.method,
+          headers: Object.fromEntries(request.headers.entries())
+        }
+      }, { status: auth.status })
     }
 
     const { searchParams } = new URL(request.url)

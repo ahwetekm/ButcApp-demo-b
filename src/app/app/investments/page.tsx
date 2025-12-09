@@ -241,49 +241,74 @@ export default function InvestmentsPage() {
       console.log('Token available for investments fetch:', token ? 'YES' : 'NO')
       console.log('User ID for investments fetch:', user?.id)
       
-      // Fetch both investments and current currency rates
-      const [investmentsResponse, currencyResponse, cryptoResponse] = await Promise.all([
-        fetch(`/api/investments?userId=${userId}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }),
-        fetch('/api/currency'),
-        fetch('/api/crypto')
-      ])
-      
-      // Check if investments response is OK and is JSON
-      if (!investmentsResponse.ok) {
-        console.error('Investments API returned error status:', investmentsResponse.status)
-        setInvestments([])
-        return
-      }
-      
-      // Check content type to ensure it's JSON
-      const contentType = investmentsResponse.headers.get('content-type')
-      if (!contentType || !contentType.includes('application/json')) {
-        console.error('Investments API returned non-JSON response:', contentType)
-        setInvestments([])
-        return
-      }
-      
+        // Fetch investments and current currency rates separately for better error handling
       let investmentsResult, currencyResult, cryptoResult
       
       try {
-        investmentsResult = await investmentsResponse.json()
-        currencyResult = await currencyResponse.json()
-        cryptoResult = await cryptoResponse.json()
-      } catch (parseError) {
-        console.error('Failed to parse API responses as JSON:', parseError)
+        // First, fetch investments
+        console.log('📊 Fetching investments...')
+        const investmentsResponse = await fetch(`/api/investments?userId=${userId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
         
-        // Try to get the response text for debugging
-        try {
-          const responseText = await investmentsResponse.text()
-          console.error('Investments API response text:', responseText.substring(0, 500))
-        } catch (textError) {
-          console.error('Could not get response text:', textError)
+        // Check if investments response is OK and is JSON
+        if (!investmentsResponse.ok) {
+          console.error('❌ Investments API returned error status:', investmentsResponse.status)
+          setInvestments([])
+          return
         }
         
+        // Check content type to ensure it's JSON
+        const contentType = investmentsResponse.headers.get('content-type')
+        if (!contentType || !contentType.includes('application/json')) {
+          console.error('❌ Investments API returned non-JSON response:', contentType)
+          // Try to get the response text for debugging
+          try {
+            const responseText = await investmentsResponse.text()
+            console.error('Investments API response text:', responseText.substring(0, 500))
+          } catch (textError) {
+            console.error('Could not get response text:', textError)
+          }
+          setInvestments([])
+          return
+        }
+        
+        investmentsResult = await investmentsResponse.json()
+        console.log('✅ Investments fetched successfully')
+        
+        // Then fetch currency and crypto data (these are optional)
+        try {
+          const currencyResponse = await fetch('/api/currency')
+          if (currencyResponse.ok) {
+            currencyResult = await currencyResponse.json()
+            console.log('✅ Currency data fetched successfully')
+          } else {
+            console.warn('⚠️ Currency API failed, using empty data')
+            currencyResult = { success: false, data: [] }
+          }
+        } catch (currencyError) {
+          console.warn('⚠️ Currency API error:', currencyError)
+          currencyResult = { success: false, data: [] }
+        }
+        
+        try {
+          const cryptoResponse = await fetch('/api/crypto')
+          if (cryptoResponse.ok) {
+            cryptoResult = await cryptoResponse.json()
+            console.log('✅ Crypto data fetched successfully')
+          } else {
+            console.warn('⚠️ Crypto API failed, using empty data')
+            cryptoResult = { success: false, data: [] }
+          }
+        } catch (cryptoError) {
+          console.warn('⚠️ Crypto API error:', cryptoError)
+          cryptoResult = { success: false, data: [] }
+        }
+        
+      } catch (fetchError) {
+        console.error('❌ Failed to fetch investments:', fetchError)
         setInvestments([])
         return
       }

@@ -3324,3 +3324,291 @@ Method: GET
 Not an admin route or login page, proceeding
  GET /api/crypto 404 in 163ms
  GET /api/currency 404 in 47ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 175ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/signin
+Method: POST
+API route, skipping middleware
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Starting signin for email: noyan4job@gmail.com
+AuthService: Signin successful for: noyan4job@gmail.com
+ POST /api/auth/signin 200 in 2566ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 100ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 1328ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 136ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 144ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 141ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 132ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 145ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 145ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 131ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ POST /api/admin-access 404 in 211ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/investments
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== INVESTMENTS API START ===
+🔐 Starting authentication process
+Token found: false
+❌ No token provided
+❌ Authentication failed: Unauthorized
+ GET /api/investments 401 in 869ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 107ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 109ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled /api/investments in 1226ms (3483 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/de4ab4080bef0792.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/de4ab4080bef0792.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 168ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.de4ab4080bef0792.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.de4ab4080bef0792.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 58ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.de4ab4080bef0792.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.de4ab4080bef0792.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/signup
+Method: POST
+API route, skipping middleware
+ ○ Compiling /api/auth/signup ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signup/route.ts
+ POST /api/auth/signup 400 in 1000ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/c42f3af23ad45611.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/c42f3af23ad45611.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.c42f3af23ad45611.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.c42f3af23ad45611.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signup/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/9dd64342efbfc2a5.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 102ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/9dd64342efbfc2a5.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 51ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.9dd64342efbfc2a5.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.9dd64342efbfc2a5.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.9dd64342efbfc2a5.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.9dd64342efbfc2a5.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
