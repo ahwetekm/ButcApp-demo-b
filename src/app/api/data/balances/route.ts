@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { AuthService } from '@/lib/auth-service'
-import { db } from '@/lib/db'
+import { createClient } from '@supabase/supabase-js'
+
+// Create Supabase client directly
+const supabaseUrl = "https://dfiwgngtifuqrrxkvknn.supabase.co";
+const supabaseServiceKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmaXdnbmd0aWZ1cXJyeGt2a25uIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NTI3NzMyMSwiZXhwIjoyMDgwODUzMzIxfQ.uCfJ5DzQ2QCiyXycTrHEaKh1EvAFbuP8HBORmBSPbX8";
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Authentication middleware
 async function authenticate(request: NextRequest) {
@@ -32,26 +37,49 @@ export async function GET(request: NextRequest) {
     const userId = auth.user.id
 
     // Get user profile with balance information
-    const userProfile = await db.userProfile.findUnique({
-      where: { userId }
-    })
+    const { data: userProfileData, error: profileError } = await supabase
+      .from('user_profiles')
+      .select('*')
+      .eq('userid', userId)
+      .limit(1)
+
+    if (profileError) {
+      console.error('Profile fetch error:', profileError)
+      return NextResponse.json({
+        success: false,
+        error: 'Profile fetch failed'
+      }, { status: 500 })
+    }
+
+    const userProfile = userProfileData && userProfileData.length > 0 ? userProfileData[0] : null
 
     if (!userProfile) {
       // Create default profile if not exists
-      const newProfile = await db.userProfile.create({
-        data: {
-          userId,
+      const { data: newProfileData, error: insertError } = await supabase
+        .from('user_profiles')
+        .insert({
+          id: `profile_${userId}_${Date.now()}`,
+          userid: userId,
           email: '',
-          fullName: '',
+          fullname: '',
           cash: 0,
           bank: 0,
           savings: 0
-        }
-      })
+        })
+        .select()
+        .single()
+
+      if (insertError) {
+        console.error('Profile creation error:', insertError)
+        return NextResponse.json({
+          success: false,
+          error: 'Profile creation failed'
+        }, { status: 500 })
+      }
 
       return NextResponse.json({
         success: true,
-        data: newProfile
+        data: newProfileData
       })
     }
 
@@ -82,22 +110,46 @@ export async function PUT(request: NextRequest) {
     // Use authenticated user's ID instead of requiring userId parameter
     const userId = auth.user.id
 
-    const updatedProfile = await db.userProfile.upsert({
-      where: { userId },
-      update: {
-        cash: parseFloat(body.cash) || 0,
-        bank: parseFloat(body.bank) || 0,
-        savings: parseFloat(body.savings) || 0
-      },
-      create: {
-        userId,
-        email: body.email || '',
-        fullName: body.fullName || '',
-        cash: parseFloat(body.cash) || 0,
-        bank: parseFloat(body.bank) || 0,
-        savings: parseFloat(body.savings) || 0
-      }
-    })
+    const { data: existingProfile } = await supabase
+      .from('user_profiles')
+      .select('*')
+      .eq('userid', userId)
+      .limit(1)
+
+    const updateData = {
+      cash: parseFloat(body.cash) || 0,
+      bank: parseFloat(body.bank) || 0,
+      savings: parseFloat(body.savings) || 0,
+      email: body.email || '',
+      fullname: body.fullName || '',
+      updatedat: new Date().toISOString()
+    }
+
+    let updatedProfile
+
+    if (existingProfile && existingProfile.length > 0) {
+      // Update existing profile
+      const { data } = await supabase
+        .from('user_profiles')
+        .update(updateData)
+        .eq('userid', userId)
+        .select()
+        .single()
+      updatedProfile = data
+    } else {
+      // Create new profile
+      const { data } = await supabase
+        .from('user_profiles')
+        .insert({
+          id: `profile_${userId}_${Date.now()}`,
+          userid: userId,
+          ...updateData,
+          createdat: new Date().toISOString()
+        })
+        .select()
+        .single()
+      updatedProfile = data
+    }
 
     return NextResponse.json({
       success: true,

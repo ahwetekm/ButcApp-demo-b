@@ -1,64 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { AuthService } from '@/lib/auth-service'
 
+// GET /api/auth/me - Get current user info
 export async function GET(request: NextRequest) {
-  console.log('=== AUTH ME API DEBUG ===')
-  console.log('Timestamp:', new Date().toISOString())
-  console.log('Environment:', process.env.NODE_ENV)
-  
   try {
-    const authHeader = request.headers.get('authorization')
-    console.log('Auth header:', authHeader)
-    
-    const user = await AuthService.getCurrentUserFromRequest(request)
-    console.log('User from AuthService:', user)
+    const token = request.cookies.get('auth-token')?.value || 
+                  request.headers.get('authorization')?.replace('Bearer ', '') ||
+                  request.nextUrl.searchParams.get('token')
 
-    if (!user) {
-      console.log('No user found')
+    if (!token) {
       return NextResponse.json({
         success: false,
         error: 'Oturum bulunamadı',
         debug: {
-          environment: process.env.NODE_ENV,
-          authHeader: authHeader
+          environment: 'development',
+          authHeader: request.headers.get('authorization')
         }
       }, { status: 401 })
     }
 
-    console.log('User found:', user.email)
-    const response = {
+    const user = await AuthService.verifyToken(token)
+    if (!user) {
+      return NextResponse.json({
+        success: false,
+        error: 'Oturum bulunamadı',
+        debug: {
+          environment: 'development',
+          authHeader: request.headers.get('authorization')
+        }
+      }, { status: 401 })
+    }
+
+    return NextResponse.json({
       success: true,
       user: {
         id: user.id,
         email: user.email,
         fullName: user.fullName,
         avatarUrl: user.avatarUrl
-      },
-      debug: {
-        environment: process.env.NODE_ENV,
-        authHeader: authHeader
       }
-    }
-
-    console.log('Response:', response)
-    console.log('=== END AUTH ME DEBUG ===')
-
-    return NextResponse.json(response)
+    })
 
   } catch (error) {
-    console.error('=== AUTH ME ERROR ===')
-    console.error('Error:', error)
-    console.error('Error message:', (error as Error).message)
-    console.error('Error stack:', (error as Error).stack)
-    console.error('=== END AUTH ME ERROR ===')
-    
+    console.error('Auth me error:', error)
     return NextResponse.json({
       success: false,
-      error: 'Kullanıcı bilgileri alınamadı',
-      details: (error as Error).message,
+      error: 'Internal server error',
       debug: {
-        environment: process.env.NODE_ENV,
-        errorStack: (error as Error).stack
+        environment: 'development',
+        error: (error as Error).message
       }
     }, { status: 500 })
   }

@@ -2,14 +2,177 @@
 > nextjs_tailwind_shadcn_ts@0.1.0 dev /home/z/my-project
 > next dev -p 3000
 
- ⨯ Failed to start server
-Error: listen EADDRINUSE: address already in use :::3000
-    at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
-    at new Promise (<anonymous>) {
-  code: 'EADDRINUSE',
-  errno: -98,
-  syscall: 'listen',
-  address: '::',
-  port: 3000
+   ▲ Next.js 15.5.7
+   - Local:        http://localhost:3000
+   - Network:      http://21.0.5.14:3000
+   - Environments: .env.local, .env.development, .env
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Ready in 1571ms
+ ○ Compiling /api/auth/me ...
+ ✓ Compiled /api/auth/me in 2.1s (438 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/auth/me 200 in 2709ms
+ ✓ Compiled /api/data/balances in 175ms (440 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/balances 200 in 798ms
+ ✓ Compiled /middleware in 448ms (182 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ ○ Compiling / ...
+ ✓ Compiled / in 5.2s (1861 modules)
+ GET / 200 in 5674ms
+ ✓ Compiled in 611ms (957 modules)
+ ✓ Compiled in 168ms (789 modules)
+ ✓ Compiled in 107ms (957 modules)
+ ✓ Compiled in 364ms (957 modules)
+ ✓ Compiled in 146ms (789 modules)
+ ✓ Compiled in 89ms (957 modules)
+ ○ Compiling /api/data/transactions ...
+ ✓ Compiled /api/data/transactions in 588ms (1019 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/transactions 200 in 1269ms
+ ✓ Compiled /api/data/recurring-transactions in 170ms (1021 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/recurring-transactions 200 in 707ms
+ ✓ Compiled /api/data/notes in 283ms (1023 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/notes 200 in 651ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ POST /api/data/transactions 200 in 309ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ POST /api/data/recurring-transactions 200 in 320ms
+ POST /api/data/notes 405 in 12ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/transactions 200 in 315ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/recurring-transactions 200 in 297ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/notes 200 in 285ms
+ ✓ Compiled in 629ms (1037 modules)
+ ✓ Compiled in 267ms (789 modules)
+ ✓ Compiled /api/data/transactions in 68ms (244 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/transactions 200 in 693ms
+ ✓ Compiled /api/data/recurring-transactions in 134ms (246 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/recurring-transactions 200 in 513ms
+ ✓ Compiled /api/data/notes in 90ms (248 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/notes 200 in 402ms
+ POST /api/data/notes 405 in 16ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/notes 200 in 473ms
+ POST /api/data/notes 405 in 13ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/notes 200 in 343ms
+ POST /api/data/notes 405 in 17ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+ GET /api/data/notes 200 in 357ms
+ ✓ Compiled /api/data/notes/[noteId] in 472ms (1021 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Error: Route "/api/data/notes/[noteId]" used `params.noteId`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at GET (src/app/api/data/notes/[noteId]/route.ts:39:24)
+  37 |       .from('user_data')
+  38 |       .select('*')
+> 39 |       .eq('id', params.noteId)
+     |                        ^
+  40 |       .eq('userid', auth.user.id)
+  41 |       .eq('type', 'note')
+  42 |       .single()
+Note GET error: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
 }
-[?25h
+ GET /api/data/notes/test-note 404 in 1470ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Error: Route "/api/data/notes/[noteId]" used `params.noteId`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at PUT (src/app/api/data/notes/[noteId]/route.ts:136:24)
+  134 |       .from('user_data')
+  135 |       .select('*')
+> 136 |       .eq('id', params.noteId)
+      |                        ^
+  137 |       .eq('userid', auth.user.id)
+  138 |       .eq('type', 'note')
+  139 |       .single()
+ PUT /api/data/notes/test-note 404 in 480ms
+ ✓ Compiled in 332ms (789 modules)
+ ✓ Compiled in 279ms (789 modules)
+ ✓ Compiled in 186ms (789 modules)
+ ✓ Compiled /api/data/transactions in 185ms (244 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Fetching transactions for userId: user_1765294651433_fk5llgnqc {
+  limit: 50,
+  offset: 0,
+  type: null,
+  category: null,
+  startDate: null,
+  endDate: null
+}
+Transactions fetched successfully: 1
+ GET /api/data/transactions 200 in 812ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Creating transaction: {
+  userId: 'user_1765294651433_fk5llgnqc',
+  amount: 250.5,
+  description: 'Maaş ödemesi',
+  category: 'faturalar',
+  type: 'expense'
+}
+Transaction created successfully: trans_user_1765294651433_fk5llgnqc_1765296054077_fjukfhqii
+ POST /api/data/transactions 200 in 313ms
+ ✓ Compiled /api/data/recurring-transactions in 156ms (246 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Fetching recurring transactions for userId: user_1765294651433_fk5llgnqc
+Recurring transactions fetched successfully: 1
+ GET /api/data/recurring-transactions 200 in 511ms
+ ✓ Compiled /api/data/notes in 89ms (248 modules)
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Fetching notes for userId: user_1765294651433_fk5llgnqc { limit: 50, offset: 0 }
+Notes fetched successfully: 0
+ GET /api/data/notes 200 in 400ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Creating note: { userId: 'user_1765294651433_fk5llgnqc', title: 'Alışveriş listesi' }
+Note created successfully: note_user_1765294651433_fk5llgnqc_1765296070468_cth98jayo
+ POST /api/data/notes 200 in 325ms
+AuthService: Verifying token
+AuthService: Token verification successful for: testuser@test.com
+Fetching transactions for userId: user_1765294651433_fk5llgnqc {
+  limit: 50,
+  offset: 0,
+  type: null,
+  category: null,
+  startDate: null,
+  endDate: null
+}
+Transactions fetched successfully: 2
+ GET /api/data/transactions 200 in 299ms
