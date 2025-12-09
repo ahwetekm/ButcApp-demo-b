@@ -1815,3 +1815,471 @@ User has admin role: admin
 Pathname: /favicon.png
 Method: GET
 Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+JWT Verification - Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd...
+Token verification error: Error: Invalid or expired token
+    at verifyToken (src/lib/jwt.ts:35:11)
+    at async verifyAdminToken (src/lib/jwt.ts:63:21)
+    at async GET (src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts:16:21)
+  33 |     return payload as JWTPayload
+  34 |   } catch (error) {
+> 35 |     throw new Error('Invalid or expired token')
+     |           ^
+  36 |   }
+  37 | }
+  38 |
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 403 in 149ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 178ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 200 in 24ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:45:1]
+ [2m42[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024 / 1024), // MB
+ [2m43[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024 / 1024), // MB
+ [2m44[0m |         external: Math.round(memUsage.external / 1024 / 1024) // MB
+ [2m45[0m |         rss: Math.round(memUsage.rss / 1024 / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m46[0m |       },
+ [2m47[0m |       nodeVersion: process.version,
+ [2m48[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ○ Compiling /_error ...
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:45:1]
+ [2m42[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024 / 1024), // MB
+ [2m43[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024 / 1024), // MB
+ [2m44[0m |         external: Math.round(memUsage.external / 1024 / 1024) // MB
+ [2m45[0m |         rss: Math.round(memUsage.rss / 1024 / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m46[0m |       },
+ [2m47[0m |       nodeVersion: process.version,
+ [2m48[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:45:1]
+ [2m42[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024 / 1024), // MB
+ [2m43[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024 / 1024), // MB
+ [2m44[0m |         external: Math.round(memUsage.external / 1024 / 1024) // MB
+ [2m45[0m |         rss: Math.round(memUsage.rss / 1024 / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m46[0m |       },
+ [2m47[0m |       nodeVersion: process.version,
+ [2m48[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 500 in 4886ms
+ GET / 500 in 1639ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 500 in 787ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_error in 2.2s (3246 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled in 1ms (1686 modules)
+ ✓ Compiled in 0ms (1686 modules)
+ ✓ Compiled in 0ms (1686 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 1301ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 1305ms
+ ✓ Compiled in 0ms (1686 modules)
+ ✓ Compiled in 0ms (1686 modules)
+ ✓ Compiled in 0ms (1686 modules)
+ GET / 200 in 1407ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 1966ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: true
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status ...
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status in 760ms (1693 modules)
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:45:1]
+ [2m42[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024 / 1024), // MB
+ [2m43[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024 / 1024), // MB
+ [2m44[0m |         external: Math.round(memUsage.external / 1024 / 1024) // MB
+ [2m45[0m |         rss: Math.round(memUsage.rss / 1024 / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m46[0m |       },
+ [2m47[0m |       nodeVersion: process.version,
+ [2m48[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ ○ Compiling /_not-found ...
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:45:1]
+ [2m42[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024 / 1024), // MB
+ [2m43[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024 / 1024), // MB
+ [2m44[0m |         external: Math.round(memUsage.external / 1024 / 1024) // MB
+ [2m45[0m |         rss: Math.round(memUsage.rss / 1024 / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m46[0m |       },
+ [2m47[0m |       nodeVersion: process.version,
+ [2m48[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 2603ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 2585ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: true
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 16ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 500 in 79ms
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:45:1]
+ [2m42[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024 / 1024), // MB
+ [2m43[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024 / 1024), // MB
+ [2m44[0m |         external: Math.round(memUsage.external / 1024 / 1024) // MB
+ [2m45[0m |         rss: Math.round(memUsage.rss / 1024 / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m46[0m |       },
+ [2m47[0m |       nodeVersion: process.version,
+ [2m48[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: true
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 25ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 500 in 17ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: true
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 20ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 32ms
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'rss'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:36:1]
+ [2m33[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024), // MB
+ [2m34[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024), // MB
+ [2m35[0m |         external: Math.round(memUsage.external / 1024) // MB
+ [2m36[0m |         rss: Math.round(memUsage.rss / 1024) // MB
+    : [35;1m        ^^^[0m
+ [2m37[0m |       },
+ [2m38[0m |       nodeVersion: process.version,
+ [2m39[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 500 in 22ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: true
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 23ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 500 in 25ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 23ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 18ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 20ms
+ ✓ Compiled /_not-found in 781ms (1678 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET / 500 in 33ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 25ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/react-refresh.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/main.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/react-refresh.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_error.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/main.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_error.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/development/_devMiddlewareManifest.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/development/_devMiddlewareManifest.json
+Method: GET
+Not an admin route or login page, proceeding
