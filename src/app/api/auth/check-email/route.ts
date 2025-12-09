@@ -3,6 +3,11 @@ import { db, users } from '@/lib/db'
 import { eq } from 'drizzle-orm'
 
 export async function POST(request: NextRequest) {
+  const startTime = Date.now()
+  const headersList = request.headers
+  const ipAddress = headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || 'unknown'
+  const userAgent = headersList.get('user-agent') || 'unknown'
+  
   try {
     const { email } = await request.json()
 
@@ -22,8 +27,12 @@ export async function POST(request: NextRequest) {
       }, { status: 400 })
     }
 
+    console.log('Checking email:', email.toLowerCase().trim())
+
     // Veritabanında kontrol et
     const existingUser = await db.select().from(users).where(eq(users.email, email.toLowerCase().trim())).limit(1)
+
+    console.log('Email check result:', existingUser.length > 0 ? 'exists' : 'not found')
 
     return NextResponse.json({
       success: true,
@@ -32,9 +41,12 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Email check error:', error)
+    console.error('Error stack:', (error as Error).stack)
+    
     return NextResponse.json({
       success: false,
-      error: 'Bir hata oluştu'
+      error: 'Bir hata oluştu',
+      details: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
     }, { status: 500 })
   }
 }

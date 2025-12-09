@@ -1,4 +1,5 @@
-import { db } from '@/lib/db'
+import { db, systemLogs, logStats } from '@/lib/db'
+import { eq } from 'drizzle-orm'
 import { headers } from 'next/headers'
 
 export interface LogData {
@@ -38,9 +39,32 @@ export class Logger {
         metadata: data.metadata ? JSON.stringify(data.metadata) : null,
       }
 
-      await db.systemLog.create({
-        data: logEntry
-      })
+      // Try to log to database, but don't fail if database is not available
+      try {
+        await db.insert(systemLogs).values({
+          id: `log_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+          type: data.type,
+          level: data.level || 'info',
+          userId: data.userId,
+          adminId: data.adminId,
+          action: data.action,
+          description: data.description,
+          metadata: data.metadata ? JSON.stringify(data.metadata) : null,
+          ipAddress: data.ipAddress,
+          userAgent: data.userAgent,
+          endpoint: data.endpoint,
+          method: data.method,
+          statusCode: data.statusCode,
+          responseTime: data.responseTime,
+          error: data.error,
+          stackTrace: data.stackTrace,
+          createdAt: new Date(),
+        })
+      } catch (dbError) {
+        console.error('Failed to log to database:', dbError)
+        // Fallback to console logging
+        console.log(`[${data.type.toUpperCase()}] ${data.action}: ${data.description || ''}`, data)
+      }
 
       // Update log statistics (sadece error'lar için)
       if (data.level === 'error') {
@@ -49,7 +73,7 @@ export class Logger {
         await this.updateLogStats(data.type, 0, data.responseTime)
       }
     } catch (error) {
-      console.error('Failed to log to database:', error)
+      console.error('Failed to log:', error)
       // Fallback to console logging
       console.log(`[${data.type.toUpperCase()}] ${data.action}: ${data.description || ''}`, data)
     }
@@ -148,42 +172,29 @@ export class Logger {
       const today = new Date()
       today.setHours(0, 0, 0, 0)
 
-      const existingStats = await db.logStats.findUnique({
-        where: {
-          date_logType: {
-            date: today,
-            logType
-          }
-        }
-      })
+      const existingStats = await db.select().from(logStats)
+        .where(eq(logStats.date, today))
+        .where(eq(logStats.logType, logType))
+        .limit(1)
 
-      if (existingStats) {
-        await db.logStats.update({
-          where: {
-            date_logType: {
-              date: today,
-              logType
-            }
-          },
-          data: {
-            totalCount: existingStats.totalCount + 1,
-            errorCount: existingStats.errorCount + errorCount,
-            avgResponseTime: responseTime ? 
-              (existingStats.avgResponseTime ? 
-                (existingStats.avgResponseTime + responseTime) / 2 : 
-                responseTime
-              ) : existingStats.avgResponseTime
-          }
-        })
+      if (existingStats.length > 0) {
+        await db.update(logStats).set({
+          totalCount: existingStats[0].totalCount + 1,
+          errorCount: existingStats[0].errorCount + errorCount,
+          avgResponseTime: responseTime ? 
+            (existingStats[0].avgResponseTime ? 
+              (existingStats[0].avgResponseTime + responseTime) / 2 : 
+              responseTime
+            ) : existingStats[0].avgResponseTime
+        }).where(eq(logStats.id, existingStats[0].id))
       } else {
-        await db.logStats.create({
-          data: {
-            date: today,
-            logType,
-            totalCount: 1,
-            errorCount,
-            avgResponseTime: responseTime
-          }
+        await db.insert(logStats).values({
+          id: `stats_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+          date: today,
+          logType,
+          totalCount: 1,
+          errorCount,
+          avgResponseTime: responseTime
         })
       }
     } catch (error) {
@@ -202,24 +213,26 @@ export class Logger {
     offset?: number
   } = {}) {
     try {
-      const where: any = {}
+      let query = db.select().from(systemLogs)
 
-      if (filters.type) where.type = filters.type
-      if (filters.level) where.level = filters.level
-      if (filters.userId) where.userId = filters.userId
-      if (filters.adminId) where.adminId = filters.adminId
-      if (filters.startDate || filters.endDate) {
-        where.createdAt = {}
-        if (filters.startDate) where.createdAt.gte = filters.startDate
-        if (filters.endDate) where.createdAt.lte = filters.endDate
+      // Apply filters
+      if (filters.type) {
+        query = query.where(eq(systemLogs.type, filters.type))
+      }
+      if (filters.level) {
+        query = query.where(eq(systemLogs.level, filters.level))
+      }
+      if (filters.userId) {
+        query = query.where(eq(systemLogs.userId, filters.userId))
+      }
+      if (filters.adminId) {
+        query = query.where(eq(systemLogs.adminId, filters.adminId))
       }
 
-      const logs = await db.systemLog.findMany({
-        where,
-        orderBy: { createdAt: 'desc' },
-        take: filters.limit || 100,
-        skip: filters.offset || 0
-      })
+      const logs = await query
+        .orderBy(systemLogs.createdAt, 'desc')
+        .limit(filters.limit || 100)
+        .offset(filters.offset || 0)
 
       return logs.map(log => ({
         ...log,
@@ -246,16 +259,9 @@ export class Logger {
         break
     }
 
-    return await db.logStats.findMany({
-      where: {
-        date: {
-          gte: startDate
-        }
-      },
-      orderBy: [
-        { date: 'desc' },
-        { logType: 'asc' }
-      ]
-    })
+    return await db.select().from(logStats)
+      .where(eq(logStats.date, startDate))
+      .orderBy(logStats.date, 'desc')
+      .orderBy(logStats.logType, 'asc')
   }
 }
