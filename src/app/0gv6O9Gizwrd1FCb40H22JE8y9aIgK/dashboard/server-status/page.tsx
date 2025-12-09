@@ -36,7 +36,7 @@ export default function ServerStatusPage() {
       console.log('📡 Server Status: API isteği gönderiliyor...')
       console.log('📡 Server Status: Token:', token.substring(0, 20) + '...')
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status`, {
+      const response = await fetch('/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -77,6 +77,17 @@ export default function ServerStatusPage() {
 
   useEffect(() => {
     console.log('🚀 Server Status: Component mount edildi')
+    
+    // Token var mı diye kontrol et
+    const token = localStorage.getItem('adminToken') || 
+                   document.cookie.split('; ').find(row => row.startsWith('auth-token='))?.split('=')[1]
+    
+    if (!token) {
+      console.log('❌ Server Status: Token bulunamadı, fetch iptal ediliyor')
+      return
+    }
+    
+    console.log('📡 Server Status: Token bulundu, fetch başlatılıyor...')
     fetchSystemInfo()
     
     const interval = setInterval(fetchSystemInfo, 5000)

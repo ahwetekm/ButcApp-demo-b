@@ -839,3 +839,808 @@ Middleware: Token found: false
 Not an admin route or login page, proceeding
  GET / 200 in 150ms
  GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 38ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth in 149ms (1009 modules)
+Admin Auth API: Login attempt { username: 'noyan4job@gmail.com', hasPassword: true }
+Admin Auth API: Invalid credentials
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 401 in 253ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 279ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 44ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK
+Middleware: Token found: false
+Middleware: No token, redirecting to login
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: false
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 88ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+Admin Auth API: Response {"success":true,"data":{"user":{"id":"admin","username":"admin","email":"admin@butcapp.com","name":"admin","role":"admin","lastLogin":"2025-12-09T17:28:01.985Z"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYnV0Y2FwcC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjUzMDEyODEsImV4cCI6MTc2NTM4NzY4MX0._SzAcfY1zEv4TVwf5Re_FynJq1nPRHBRL1MKTWulkbs"}}
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 16ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+Admin Auth API: Response {"success":true,"data":{"user":{"id":"admin","username":"admin","email":"admin@butcapp.com","name":"admin","role":"admin","lastLogin":"2025-12-09T17:28:02.850Z"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYnV0Y2FwcC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjUzMDEyODIsImV4cCI6MTc2NTM4NzY4Mn0.eRyPS7DZbYSrUFRaf-EgKdUhYDStLeuqxfTwYfmr5AQ"}}
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 14ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301282,
+  exp: 1765387682
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard in 3.5s (2916 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard 200 in 4053ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+Admin Auth API: Response {"success":true,"data":{"user":{"id":"admin","username":"admin","email":"admin@butcapp.com","name":"admin","role":"admin","lastLogin":"2025-12-09T17:28:07.817Z"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYnV0Y2FwcC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjUzMDEyODcsImV4cCI6MTc2NTM4NzY4N30.6Zy34Kik7XToL1sYlKRLEdI8gh796aKRgyqgzY2p4IM"}}
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 32ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301282,
+  exp: 1765387682
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard 200 in 93ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301282,
+  exp: 1765387682
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard 200 in 25ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats
+Method: GET
+API route, skipping middleware
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats in 434ms (1547 modules)
+Admin API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats 200 in 470ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats
+Method: GET
+API route, skipping middleware
+Admin API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats 200 in 16ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users in 1370ms (2938 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 1461ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+Admin Users API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 200 in 602ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+Admin Users API: Authentication temporarily disabled for testing
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 200 in 12ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /images/default-avatar.png
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ GET /images/default-avatar.png 404 in 610ms
+ ✓ Compiled /_not-found in 879ms (2864 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 163ms
+ GET / 200 in 42ms
+ ✓ Compiled in 209ms (1391 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 24ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 32ms
+ ✓ Compiled in 252ms (1391 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 31ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 31ms
+ ✓ Compiled in 202ms (1391 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 67ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 75ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+JWT Verification - Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd...
+Token verification error: Error: Invalid or expired token
+    at verifyToken (src/lib/jwt.ts:35:11)
+    at async verifyAdminToken (src/lib/jwt.ts:63:21)
+    at async GET (src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts:32:21)
+  33 |     return payload as JWTPayload
+  34 |   } catch (error) {
+> 35 |     throw new Error('Invalid or expired token')
+     |           ^
+  36 |   }
+  37 | }
+  38 |
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 403 in 928ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 101ms
+ GET / 200 in 44ms
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 141ms
+ GET / 200 in 126ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+JWT Verification - Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd...
+Token verification error: Error: Invalid or expired token
+    at verifyToken (src/lib/jwt.ts:35:11)
+    at async verifyAdminToken (src/lib/jwt.ts:63:21)
+    at async GET (src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts:32:21)
+  33 |     return payload as JWTPayload
+  34 |   } catch (error) {
+> 35 |     throw new Error('Invalid or expired token')
+     |           ^
+  36 |   }
+  37 | }
+  38 |
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 403 in 121ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+Admin Auth API: Response {"success":true,"data":{"user":{"id":"admin","username":"admin","email":"admin@butcapp.com","name":"admin","role":"admin","lastLogin":"2025-12-09T17:33:05.150Z"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYnV0Y2FwcC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjUzMDE1ODUsImV4cCI6MTc2NTM4Nzk4NX0.S8xSCDz_ZXMpQq4RWJYWUNIfs3hazLDL-IHFER2kLvw"}}
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 453ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 58ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 44ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/users 200 in 255ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users
+Method: GET
+API route, skipping middleware
+CORS: Request origin: null
+CORS: Headers: {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400'
+}
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users 200 in 630ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /images/default-avatar.png
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ GET /images/default-avatar.png 404 in 1270ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/system-logs
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/system-logs
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/system-logs 200 in 1708ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/logs
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/logs?limit=50&offset=0 404 in 137ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/logs
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/logs?limit=50&offset=0 404 in 50ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/users/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 654ms
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status in 885ms (2906 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 177ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 188ms
+ ✓ Compiled in 209ms (1409 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 27ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ ✓ Compiled /_not-found in 320ms (2897 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 404 in 514ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 404 in 41ms
+ ✓ Compiled in 200ms (1413 modules)
+ ✓ Compiled in 396ms (3078 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status in 636ms (2983 modules)
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 200 in 734ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 206ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+JWT Verification - Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd...
+Token verification error: Error: Invalid or expired token
+    at verifyToken (src/lib/jwt.ts:35:11)
+    at async verifyAdminToken (src/lib/jwt.ts:63:21)
+    at async GET (src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts:15:21)
+  33 |     return payload as JWTPayload
+  34 |   } catch (error) {
+> 35 |     throw new Error('Invalid or expired token')
+     |           ^
+  36 |   }
+  37 | }
+  38 |
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 403 in 100ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 200 in 21ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled in 893ms (2997 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Cookie token: true
+Final token: true
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Middleware: Token found: true
+Verifying token...
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+Middleware: Is admin: true
+Middleware: Admin verified, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 228ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765301287,
+  exp: 1765387687
+}
+User has admin role: admin
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 200 in 56ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding

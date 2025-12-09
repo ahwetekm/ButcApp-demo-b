@@ -1,41 +1,56 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyAdminToken } from '@/lib/jwt'
-//import { PrismaClient } from '@prisma/client'
+import { createClient } from '@supabase/supabase-js'
 
-//const prisma = new PrismaClient()
+const supabaseUrl = "https://dfiwgngtifuqrrxkvknn.supabase.co";
+const supabaseServiceKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmaXdnbmd0aWZ1cXJyeGt2a25uIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NTI3NzMyMSwiZXhwIjoyMDgwODUzMzIxfQ.uCfJ5DzQ2QCiyXycTrHEaKh1EvAFbuP8HBORmBSPbX8";
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 export async function GET(request: NextRequest) {
   try {
-    // Temporarily disable authentication for testing
-    console.log('Admin Posts API: Authentication temporarily disabled for testing')
+    // Token verification
+    const token = request.cookies.get('auth-token')?.value || 
+                  request.headers.get('authorization')?.replace('Bearer ', '') ||
+                  request.nextUrl.searchParams.get('token')
 
-    // Mock blog posts data
-    const mockPosts = [
-      {
-        id: 'post1',
-        title: 'Kişisel Finans Yönetiminin 10 Altın Kuralı',
-        slug: 'kisisel-finans-yonetiminin-10-altin-kurali',
-        excerpt: 'Finansal özgürlüğe giden yolda atmanız gereken adımlar.',
-        status: 'published',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        published: true
-      },
-      {
-        id: 'post2',
-        title: 'Bütçe Yönetimi 101',
-        slug: 'butce-yonetimi-101',
-        excerpt: 'Bütçe yapmanın temel prensipleri ve etkili bütçe yönetimi teknikleri.',
-        status: 'published',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        published: true
-      }
-    ]
+    if (!token) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const isAdmin = await verifyAdminToken(token)
+    if (!isAdmin) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+
+    // Fetch blog posts from Supabase
+    const { data: posts, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('status', 'published')
+      .order('createdat', { ascending: false })
+
+    if (error) {
+      console.error('Supabase blog posts fetch error:', error)
+      return NextResponse.json({
+        error: 'Failed to fetch blog posts: ' + error.message
+      }, { status: 500 })
+    }
+
+    // Transform status to published boolean
+    const transformedPosts = (posts || []).map(post => ({
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt,
+      status: post.status,
+      createdAt: post.createdat,
+      updatedAt: post.updatedat,
+      published: post.status === 'published'
+    }))
 
     return NextResponse.json({
       success: true,
-      data: mockPosts
+      data: transformedPosts
     })
 
   } catch (error) {
