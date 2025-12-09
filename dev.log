@@ -4652,3 +4652,78 @@ Not an admin route or login page, proceeding
 Pathname: /_next/static/webpack/78ee835872cd71de.webpack.hot-update.json
 Method: GET
 Not an admin route or login page, proceeding
+ GET /app/investments 200 in 185ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.78ee835872cd71de.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.78ee835872cd71de.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 36ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/aa6d7f0b85067c3b.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.aa6d7f0b85067c3b.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+ ○ Compiling /api/currency ...
+ ✓ Compiled /api/currency in 829ms (1740 modules)
+ ✓ Compiled in 820ms (1581 modules)
+=== CURRENCY API START ===
+=== CRYPTO API START ===
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 2615ms
+✅ Currency data fetched successfully: 12 items
+=== CURRENCY API END ===
+ GET /api/currency 200 in 2633ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/48752b1338a74775.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.48752b1338a74775.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled in 1605ms (3316 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/3331bd4a56f56edf.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.3331bd4a56f56edf.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 181ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.3331bd4a56f56edf.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
