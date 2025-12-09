@@ -2395,3 +2395,396 @@ Not an admin route or login page, proceeding
 Pathname: /favicon.png
 Method: GET
 Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 77ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth
+Method: POST
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth in 730ms (1255 modules)
+Admin Auth API: Login attempt { username: 'admin', hasPassword: true }
+Admin Auth API: Login successful { username: 'admin', role: 'admin' }
+Admin Auth API: Response {"success":true,"data":{"user":{"id":"admin","username":"admin","email":"admin@butcapp.com","name":"admin","role":"admin","lastLogin":"2025-12-09T17:50:16.408Z"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYnV0Y2FwcC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjUzMDI2MTYsImV4cCI6MTc2NTM4OTAxNn0.OexsV4ZyzUZDXRoT-HvWnLzivrL1XJcsySDa3eJacK0"}}
+ POST /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth 200 in 877ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Method: GET
+Login or Admin route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard in 689ms (1779 modules)
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard 200 in 805ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats
+Method: GET
+API route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats ...
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats in 756ms (1853 modules)
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765302616,
+  exp: 1765389016
+}
+User has admin role: admin
+Admin Real-time Stats API: Fetching real data from Supabase
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard
+Method: GET
+Login or Admin route, skipping middleware
+Real-time stats calculated: {
+  totalUsers: 0,
+  activeUsers: 0,
+  todayRegistrations: 1,
+  weeklyGrowth: 13,
+  totalPosts: 0,
+  todayPosts: 3,
+  monthlyPosts: 0,
+  totalViews: 0,
+  weeklyViews: 0,
+  userTrend: [
+    { date: '2025-12-03', count: 0 },
+    { date: '2025-12-04', count: 0 },
+    { date: '2025-12-05', count: 0 },
+    { date: '2025-12-06', count: 0 },
+    { date: '2025-12-07', count: 0 },
+    { date: '2025-12-08', count: 0 },
+    { date: '2025-12-09', count: 0 }
+  ],
+  blogTrend: [
+    { date: '2025-12-03', count: 1, views: 50 },
+    { date: '2025-12-04', count: 3, views: 25 },
+    { date: '2025-12-05', count: 3, views: 50 },
+    { date: '2025-12-06', count: 4, views: 25 },
+    { date: '2025-12-07', count: 0, views: 75 },
+    { date: '2025-12-08', count: 2, views: 50 },
+    { date: '2025-12-09', count: 3, views: 50 }
+  ],
+  systemStats: [
+    { type: 'API Requests', count: 1316, avgResponseTime: 45 },
+    { type: 'Page Views', count: 3706, avgResponseTime: 23 },
+    { type: 'Database Queries', count: 287, avgResponseTime: 67 }
+  ],
+  userGrowthRate: '12.5',
+  avgPostViews: '27.8',
+  lastUpdated: '2025-12-09T17:50:22.081Z'
+}
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats 200 in 1782ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard 200 in 125ms
+ GET / 200 in 92ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats
+Method: GET
+API route, skipping middleware
+JWT Verification - Token: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImFkbWluIiwidXNlcm5hb...
+JWT Payload: {
+  id: 'admin',
+  username: 'admin',
+  email: 'admin@butcapp.com',
+  role: 'admin',
+  iat: 1765302616,
+  exp: 1765389016
+}
+User has admin role: admin
+Admin Real-time Stats API: Fetching real data from Supabase
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+Real-time stats calculated: {
+  totalUsers: 0,
+  activeUsers: 0,
+  todayRegistrations: 3,
+  weeklyGrowth: 7,
+  totalPosts: 0,
+  todayPosts: 1,
+  monthlyPosts: 0,
+  totalViews: 0,
+  weeklyViews: 0,
+  userTrend: [
+    { date: '2025-12-03', count: 0 },
+    { date: '2025-12-04', count: 0 },
+    { date: '2025-12-05', count: 0 },
+    { date: '2025-12-06', count: 0 },
+    { date: '2025-12-07', count: 0 },
+    { date: '2025-12-08', count: 0 },
+    { date: '2025-12-09', count: 0 }
+  ],
+  blogTrend: [
+    { date: '2025-12-03', count: 3, views: 50 },
+    { date: '2025-12-04', count: 3, views: 0 },
+    { date: '2025-12-05', count: 3, views: 75 },
+    { date: '2025-12-06', count: 2, views: 25 },
+    { date: '2025-12-07', count: 4, views: 75 },
+    { date: '2025-12-08', count: 0, views: 50 },
+    { date: '2025-12-09', count: 4, views: 25 }
+  ],
+  systemStats: [
+    { type: 'API Requests', count: 619, avgResponseTime: 45 },
+    { type: 'Page Views', count: 4311, avgResponseTime: 23 },
+    { type: 'Database Queries', count: 513, avgResponseTime: 67 }
+  ],
+  userGrowthRate: '12.5',
+  avgPostViews: '27.8',
+  lastUpdated: '2025-12-09T17:50:22.617Z'
+}
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/realtime-stats 200 in 149ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status
+Method: GET
+Login or Admin route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status 200 in 37ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/dashboard/server-status/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ ○ Compiling /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status ...
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'residentSetSize'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:36:1]
+ [2m33[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024), // MB
+ [2m34[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024), // MB
+ [2m35[0m |         external: Math.round(memUsage.external / 1024) // MB
+ [2m36[0m |         residentSetSize: Math.round(memUsage.rss / 1024) // MB
+    : [35;1m        ^^^^^^^^^^^^^^^[0m
+ [2m37[0m |       },
+ [2m38[0m |       nodeVersion: process.version,
+ [2m39[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'residentSetSize'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:36:1]
+ [2m33[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024), // MB
+ [2m34[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024), // MB
+ [2m35[0m |         external: Math.round(memUsage.external / 1024) // MB
+ [2m36[0m |         residentSetSize: Math.round(memUsage.rss / 1024) // MB
+    : [35;1m        ^^^^^^^^^^^^^^^[0m
+ [2m37[0m |       },
+ [2m38[0m |       nodeVersion: process.version,
+ [2m39[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ ⨯ ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+Error:   [31mx[0m Expected ',', got 'residentSetSize'
+    ,-[[36;1;4m/home/z/my-project/src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts[0m:36:1]
+ [2m33[0m |         heapUsed: Math.round(memUsage.heapUsed / 1024), // MB
+ [2m34[0m |         heapTotal: Math.round(memUsage.heapTotal / 1024), // MB
+ [2m35[0m |         external: Math.round(memUsage.external / 1024) // MB
+ [2m36[0m |         residentSetSize: Math.round(memUsage.rss / 1024) // MB
+    : [35;1m        ^^^^^^^^^^^^^^^[0m
+ [2m37[0m |       },
+ [2m38[0m |       nodeVersion: process.version,
+ [2m39[0m |       platform: process.platform,
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status/route.ts
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 2194ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 2465ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/system-status 500 in 2202ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/e7aa1acebc2fbcb7.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 500 in 32ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.e7aa1acebc2fbcb7.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/e7aa1acebc2fbcb7.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/react-refresh.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/main.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_error.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.e7aa1acebc2fbcb7.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/4dc1296a0ec44314.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 500 in 20ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/main.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/development/_devMiddlewareManifest.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/react-refresh.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_error.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/development/_devMiddlewareManifest.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/01e38326dea60c5e.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/01e38326dea60c5e.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled /_not-found in 1156ms (3407 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 274ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 139ms
+ GET / 200 in 157ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 80ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
