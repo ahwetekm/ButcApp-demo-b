@@ -4727,3 +4727,357 @@ Not an admin route or login page, proceeding
 Pathname: /_next/static/css/app/layout.css
 Method: GET
 Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+ ✓ Compiled /api/currency in 330ms (1740 modules)
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.S.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.S.YTL&startDate=20251202&endDate=20251209&type=json&key=vidaQMAA0C
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+ ✓ Compiled /api/crypto in 238ms (1742 modules)
+=== CRYPTO API START ===
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 380ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+❌ TCMB API error: 403 
+❌ Currency API error: Error: TCMB API returned 403: 
+    at GET (src/app/api/currency/route.ts:49:13)
+  47 |     if (!response.ok) {
+  48 |       console.error('❌ TCMB API error:', response.status, response.statusText);
+> 49 |       throw new Error(`TCMB API returned ${response.status}: ${response.statusText}`);
+     |             ^
+  50 |     }
+  51 |
+  52 |     const data: TCMBResponse = await response.json();
+ GET /api/currency 200 in 1463ms
+ GET /app/investments 200 in 179ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.S.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.S.YTL&startDate=20251202&endDate=20251209&type=json&key=vidaQMAA0C
+=== CRYPTO API START ===
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 148ms
+❌ TCMB API error: 403 
+❌ Currency API error: Error: TCMB API returned 403: 
+    at GET (src/app/api/currency/route.ts:49:13)
+  47 |     if (!response.ok) {
+  48 |       console.error('❌ TCMB API error:', response.status, response.statusText);
+> 49 |       throw new Error(`TCMB API returned ${response.status}: ${response.statusText}`);
+     |             ^
+  50 |     }
+  51 |
+  52 |     const data: TCMBResponse = await response.json();
+ GET /api/currency 200 in 917ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 258ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/signin
+Method: POST
+API route, skipping middleware
+ ○ Compiling /api/auth/signin ...
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Starting signin for email: noyan4job@gmail.com
+AuthService: Signin successful for: noyan4job@gmail.com
+ POST /api/auth/signin 200 in 2827ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app 200 in 94ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 1733ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 134ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 130ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 141ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 133ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 132ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 135ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 150ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+ ⚠ ./src/lib/logger.ts
+Attempted import error: 'supabase' is not exported from '@/lib/db' (imported as 'supabase').
+
+Import trace for requested module:
+./src/lib/logger.ts
+./src/app/api/auth/signin/route.ts
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 474ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 87ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/app/investments/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 140ms
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 159ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.S.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.S.YTL&startDate=20251202&endDate=20251209&type=json&key=vidaQMAA0C
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== CRYPTO API START ===
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 120ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/auth/me
+Method: GET
+API route, skipping middleware
+AuthService: Verifying token
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 137ms
+AuthService: User not found for token verification
+ GET /api/auth/me 401 in 153ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/crypto
+Method: GET
+API route, skipping middleware
+=== CRYPTO API START ===
+✅ Crypto data fetched successfully: 12 items
+=== CRYPTO API END ===
+ GET /api/crypto 200 in 113ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/admin-access
+Method: POST
+API route, skipping middleware
+=== ADMIN ACCESS API START ===
+🔍 Verifying token for admin access...
+AuthService: Verifying token
+AuthService: User not found for token verification
+❌ Invalid token for admin access
+ POST /api/admin-access 401 in 148ms
+❌ TCMB API error: 403 
+❌ Currency API error: Error: TCMB API returned 403: 
+    at GET (src/app/api/currency/route.ts:49:13)
+  47 |     if (!response.ok) {
+  48 |       console.error('❌ TCMB API error:', response.status, response.statusText);
+> 49 |       throw new Error(`TCMB API returned ${response.status}: ${response.statusText}`);
+     |             ^
+  50 |     }
+  51 |
+  52 |     const data: TCMBResponse = await response.json();
+ GET /api/currency 200 in 1065ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.S.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.S.YTL&startDate=20251202&endDate=20251209&type=json&key=vidaQMAA0C
+❌ TCMB API error: 403 
+❌ Currency API error: Error: TCMB API returned 403: 
+    at GET (src/app/api/currency/route.ts:49:13)
+  47 |     if (!response.ok) {
+  48 |       console.error('❌ TCMB API error:', response.status, response.statusText);
+> 49 |       throw new Error(`TCMB API returned ${response.status}: ${response.statusText}`);
+     |             ^
+  50 |     }
+  51 |
+  52 |     const data: TCMBResponse = await response.json();
+ GET /api/currency 200 in 328ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /api/currency
+Method: GET
+API route, skipping middleware
+=== CURRENCY API START ===
+📊 Fetching real TCMB data...
+🔍 Fetching from TCMB: https://evds2.tcmb.gov.tr/service/evds/series=TP.DK.USD.S.YTL-TP.DK.EUR.S.YTL-TP.DK.GBP.S.YTL-TP.DK.CHF.S.YTL-TP.DK.JPY.S.YTL-TP.DK.SAR.S.YTL-TP.DK.AED.S.YTL-TP.DK.CAD.S.YTL-TP.DK.AUD.S.YTL-TP.DK.RUB.S.YTL-TP.DK.CNY.S.YTL-TP.DK.NOK.S.YTL&startDate=20251202&endDate=20251209&type=json&key=vidaQMAA0C
+❌ TCMB API error: 403 
+❌ Currency API error: Error: TCMB API returned 403: 
+    at GET (src/app/api/currency/route.ts:49:13)
+  47 |     if (!response.ok) {
+  48 |       console.error('❌ TCMB API error:', response.status, response.statusText);
+> 49 |       throw new Error(`TCMB API returned ${response.status}: ${response.statusText}`);
+     |             ^
+  50 |     }
+  51 |
+  52 |     const data: TCMBResponse = await response.json();
+ GET /api/currency 200 in 343ms
+ ✓ Compiled /api/admin-access in 1649ms (3316 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/27abda0fcb7b58fc.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /app/investments
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/app/layout.27abda0fcb7b58fc.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+ GET /app/investments 200 in 186ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/webpack.27abda0fcb7b58fc.hot-update.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
