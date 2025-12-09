@@ -794,3 +794,48 @@ Caused by:
 Import trace for requested module:
 ./src/contexts/AdminAuthContext.tsx
 ./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/layout.tsx
+ ⨯ ./src/contexts/AdminAuthContext.tsx
+Error:   [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/z/my-project/src/contexts/AdminAuthContext.tsx[0m:192:1]
+ [2m189[0m |       }
+ [2m190[0m |     }
+ [2m191[0m | 
+ [2m192[0m |   const logout = () => {
+     : [35;1m  ^[0m
+ [2m193[0m |     setUser(null)
+ [2m194[0m |     setToken(null)
+ [2m195[0m |     localStorage.removeItem('adminUser')
+     `----
+  [31mx[0m 'import', and 'export' cannot be used outside of module code
+     ,-[[36;1;4m/home/z/my-project/src/contexts/AdminAuthContext.tsx[0m:223:1]
+ [2m220[0m |   )
+ [2m221[0m | }
+ [2m222[0m | 
+ [2m223[0m | export function useAuth() {
+     : [35;1m^^^^^^[0m
+ [2m224[0m |   const context = useContext(AuthContext)
+ [2m225[0m |   if (context === undefined) {
+ [2m226[0m |     throw new Error('useAuth must be used within an AuthProvider')
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/contexts/AdminAuthContext.tsx
+./src/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/layout.tsx
+ ✓ Compiled in 715ms (1777 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Cookie token: false
+Final token: false
+Middleware: Checking path: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Middleware: Token found: false
+Not an admin route or login page, proceeding
+ GET / 200 in 150ms
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 38ms

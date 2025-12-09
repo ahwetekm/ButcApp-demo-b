@@ -74,7 +74,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem('adminUser')
         localStorage.removeItem('adminToken')
         sessionStorage.removeItem('adminToken')
-        document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+        document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan1970 00:00:00 GMT'
       }
     } else {
       console.log('AdminAuthContext: No authentication data found')
@@ -126,39 +126,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.log('Trying auth endpoint...');
       const apiPath = '/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/api/auth';
       
+      const response = await fetch(apiPath, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password, captchaAnswer: captchaAnswer?.trim() || null }),
+        cache: 'no-store'
+      });
+
+      console.log('Auth response status:', response.status);
+      console.log('Auth response OK:', response.ok);
+      console.log('Auth response headers:', response.headers);
+
+      // Response text'ini önce al
+      const responseText = await response.text();
+      console.log('Raw response text:', responseText);
+
+      if (!response.ok) {
+        console.error('HTTP Error Response:', responseText);
+        throw new Error(`HTTP ${response.status}: ${responseText}`);
+      }
+
+      // JSON parse et
+      let data;
       try {
-        const response = await fetch(apiPath, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password, captchaAnswer: captchaAnswer?.trim() || null }),
-          cache: 'no-store'
-        });
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('JSON Parse Error:', parseError);
+        throw new Error('Invalid JSON response from server');
+      }
 
-        console.log('Auth response status:', response.status);
-        console.log('Auth response OK:', response.ok);
-        console.log('Auth response headers:', response.headers);
-
-        // Response text'ini önce al
-        const responseText = await response.text();
-        console.log('Raw response text:', responseText);
-
-        if (!response.ok) {
-          console.error('HTTP Error Response:', responseText);
-          throw new Error(`HTTP ${response.status}: ${responseText}`);
-        }
-
-        // JSON parse et
-        let data;
-        try {
-          data = JSON.parse(responseText);
-        } catch (parseError) {
-          console.error('JSON Parse Error:', parseError);
-          throw new Error('Invalid JSON response from server');
-        }
-
-        console.log('Parsed response data:', data);
+      console.log('Parsed response data:', data);
 
       if (data.success) {
         const { user: userData, token } = data.data
@@ -197,7 +196,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     sessionStorage.removeItem('adminToken')
     
     // Cookie'den token'ı sil
-    document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan1970 00:00:00 GMT'
     
     router.push('/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login')
   }
