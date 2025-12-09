@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import { SignJWT, jwtVerify } from 'jose'
-import { db } from '@/lib/db'
+import { db, users, userProfiles, adminUsers } from '@/lib/db'
+import { eq } from 'drizzle-orm'
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'butcapp-secret-key-change-in-production-2024'
@@ -66,11 +67,9 @@ export class AuthService {
       }
       
       // Check if user already exists
-      const existingUser = await db.user.findUnique({
-        where: { email: email.toLowerCase().trim() }
-      })
+      const existingUser = await db.select().from(users).where(eq(users.email, email.toLowerCase().trim())).limit(1)
 
-      if (existingUser) {
+      if (existingUser.length > 0) {
         console.log('AuthService: User already exists:', email)
         return { error: 'Bu e-posta adresi zaten kayıtlı. Lütfen farklı bir e-posta adresi kullanın veya giriş yapın.' }
       }
@@ -79,35 +78,40 @@ export class AuthService {
       const passwordHash = await bcrypt.hash(password, 12)
 
       // Create user - TIMING LOG START
-      console.log(`[${Date.now()}] AuthService: Starting db.user.create for email:`, email)
-      const user = await db.user.create({
-        data: {
-          email: email.toLowerCase().trim(),
-          passwordHash,
-          fullName: fullName?.trim() || null,
-        }
-      })
-      console.log(`[${Date.now()}] AuthService: Completed db.user.create for userId:`, user.id)
+      console.log(`[${Date.now()}] AuthService: Starting user creation for email:`, email)
+      
+      const userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      const now = new Date()
+      
+      const newUser = await db.insert(users).values({
+        id: userId,
+        email: email.toLowerCase().trim(),
+        passwordHash,
+        fullName: fullName?.trim() || null,
+        createdAt: now,
+        updatedAt: now,
+      }).returning()
+      
+      console.log(`[${Date.now()}] AuthService: Completed user creation for userId:`, newUser[0].id)
 
       // Create profile
-      await db.userProfile.create({
-        data: {
-          userId: user.id,
-          email: user.email,
-          fullName: user.fullName,
-        }
+      await db.insert(userProfiles).values({
+        id: `profile_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        userId: newUser[0].id,
+        email: newUser[0].email,
+        fullName: newUser[0].fullName,
+        createdAt: now,
+        updatedAt: now,
       })
 
       // Check if user is admin
-      const adminUser = await db.adminUser.findUnique({
-        where: { userId: user.id }
-      })
+      const adminUser = await db.select().from(adminUsers).where(eq(adminUsers.userId, newUser[0].id)).limit(1)
 
       // Generate token - NO EMAIL VERIFICATION NEEDED
       const token = await new SignJWT({
-        userId: user.id,
-        email: user.email,
-        role: adminUser ? 'admin' : 'user'
+        userId: newUser[0].id,
+        email: newUser[0].email,
+        role: adminUser.length > 0 ? 'admin' : 'user'
       })
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()
@@ -118,10 +122,10 @@ export class AuthService {
 
       return {
         user: {
-          id: user.id,
-          email: user.email,
-          fullName: user.fullName || undefined,
-          avatarUrl: user.avatarUrl || undefined,
+          id: newUser[0].id,
+          email: newUser[0].email,
+          fullName: newUser[0].fullName || undefined,
+          avatarUrl: newUser[0].avatarUrl || undefined,
         },
         token
       }
@@ -136,32 +140,28 @@ export class AuthService {
       console.log('AuthService: Starting signin for email:', email)
       
       // Find user
-      const user = await db.user.findUnique({
-        where: { email: email.toLowerCase().trim() }
-      })
+      const user = await db.select().from(users).where(eq(users.email, email.toLowerCase().trim())).limit(1)
 
-      if (!user) {
+      if (user.length === 0) {
         console.log('AuthService: User not found:', email)
         return { error: 'E-posta veya şifre hatalı' }
       }
 
       // Check password
-      const isValidPassword = await bcrypt.compare(password, user.passwordHash)
+      const isValidPassword = await bcrypt.compare(password, user[0].passwordHash)
       if (!isValidPassword) {
         console.log('AuthService: Invalid password for:', email)
         return { error: 'E-posta veya şifre hatalı' }
       }
 
       // Check if user is admin
-      const adminUser = await db.adminUser.findUnique({
-        where: { userId: user.id }
-      })
+      const adminUser = await db.select().from(adminUsers).where(eq(adminUsers.userId, user[0].id)).limit(1)
 
       // Generate token
       const token = await new SignJWT({
-        userId: user.id,
-        email: user.email,
-        role: adminUser ? 'admin' : 'user'
+        userId: user[0].id,
+        email: user[0].email,
+        role: adminUser.length > 0 ? 'admin' : 'user'
       })
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()
@@ -172,10 +172,10 @@ export class AuthService {
 
       return {
         user: {
-          id: user.id,
-          email: user.email,
-          fullName: user.fullName || undefined,
-          avatarUrl: user.avatarUrl || undefined,
+          id: user[0].id,
+          email: user[0].email,
+          fullName: user[0].fullName || undefined,
+          avatarUrl: user[0].avatarUrl || undefined,
         },
         token
       }
@@ -193,23 +193,15 @@ export class AuthService {
       const decoded = payload as { userId: string; email: string; role?: string; id?: string }
       
       // Find user in database
-      const user = await db.user.findUnique({
-        where: { id: decoded.userId || decoded.id },
-        select: {
-          id: true,
-          email: true,
-          fullName: true,
-          avatarUrl: true
-        }
-      })
+      const user = await db.select().from(users).where(eq(users.id, decoded.userId || decoded.id)).limit(1)
 
-      if (user) {
-        console.log('AuthService: Token verification successful for:', user.email)
+      if (user.length > 0) {
+        console.log('AuthService: Token verification successful for:', user[0].email)
         return {
-          id: user.id,
-          email: user.email,
-          fullName: user.fullName || undefined,
-          avatarUrl: user.avatarUrl || undefined,
+          id: user[0].id,
+          email: user[0].email,
+          fullName: user[0].fullName || undefined,
+          avatarUrl: user[0].avatarUrl || undefined,
         }
       }
 
@@ -247,11 +239,9 @@ export class AuthService {
 
   static async resetPassword(email: string): Promise<{ error?: string }> {
     try {
-      const user = await db.user.findUnique({
-        where: { email: email.toLowerCase().trim() }
-      })
+      const user = await db.select().from(users).where(eq(users.email, email.toLowerCase().trim())).limit(1)
 
-      if (!user) {
+      if (user.length === 0) {
         return { error: 'Bu e-posta adresi kayıtlı değil' }
       }
 
@@ -267,21 +257,17 @@ export class AuthService {
 
   static async updateProfile(userId: string, data: { fullName?: string; avatarUrl?: string }): Promise<{ error?: string }> {
     try {
-      await db.user.update({
-        where: { id: userId },
-        data: {
-          ...(data.fullName && { fullName: data.fullName.trim() }),
-          ...(data.avatarUrl && { avatarUrl: data.avatarUrl.trim() }),
-        }
-      })
+      await db.update(users).set({
+        ...(data.fullName && { fullName: data.fullName.trim() }),
+        ...(data.avatarUrl && { avatarUrl: data.avatarUrl.trim() }),
+        updatedAt: new Date(),
+      }).where(eq(users.id, userId))
 
-      await db.userProfile.update({
-        where: { userId },
-        data: {
-          ...(data.fullName && { fullName: data.fullName.trim() }),
-          ...(data.avatarUrl && { avatarUrl: data.avatarUrl.trim() }),
-        }
-      })
+      await db.update(userProfiles).set({
+        ...(data.fullName && { fullName: data.fullName.trim() }),
+        ...(data.avatarUrl && { avatarUrl: data.avatarUrl.trim() }),
+        updatedAt: new Date(),
+      }).where(eq(userProfiles.userId, userId))
 
       return {}
     } catch (error) {

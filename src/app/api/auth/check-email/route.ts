@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db'
+import { db, users } from '@/lib/db'
+import { eq } from 'drizzle-orm'
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,13 +23,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Veritabanında kontrol et
-    const existingUser = await db.user.findUnique({
-      where: { email: email.toLowerCase().trim() }
-    })
+    const existingUser = await db.select().from(users).where(eq(users.email, email.toLowerCase().trim())).limit(1)
 
     return NextResponse.json({
       success: true,
-      exists: !!existingUser
+      exists: existingUser.length > 0
     })
 
   } catch (error) {
