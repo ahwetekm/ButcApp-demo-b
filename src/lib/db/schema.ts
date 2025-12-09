@@ -1,162 +1,162 @@
-import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
+import { pgTable, text, integer, real, boolean, timestamp } from 'drizzle-orm/pg-core';
 
 // Users table for authentication
-export const users = sqliteTable('users', {
+export const users = pgTable('users', {
   id: text('id').primaryKey(),
   email: text('email').unique().notNull(),
-  passwordHash: text('passwordHash').notNull(),
-  fullName: text('fullName'),
-  avatarUrl: text('avatarUrl'),
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  passwordhash: text('passwordhash').notNull(),
+  fullname: text('fullname'),
+  avatarurl: text('avatarurl'),
+  createdat: timestamp('createdat').defaultNow().notNull(),
+  updatedat: timestamp('updatedat').defaultNow().notNull(),
 });
 
 // User profile data
-export const userProfiles = sqliteTable('user_profiles', {
+export const userProfiles = pgTable('user_profiles', {
   id: text('id').primaryKey(),
-  userId: text('userId').unique().notNull(),
+  userid: text('userid').unique().notNull(),
   email: text('email').notNull(),
-  fullName: text('fullName'),
-  avatarUrl: text('avatarUrl'),
+  fullname: text('fullname'),
+  avatarurl: text('avatarurl'),
   cash: real('cash').default(0),
   bank: real('bank').default(0),
   savings: real('savings').default(0),
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  createdat: timestamp('createdat').defaultNow().notNull(),
+  updatedat: timestamp('updatedat').defaultNow().notNull(),
 });
 
 // User financial data
-export const userData = sqliteTable('user_data', {
+export const userData = pgTable('user_data', {
   id: text('id').primaryKey(),
-  userId: text('userId').notNull(),
+  userid: text('userid').notNull(),
   type: text('type').notNull(), // 'income', 'expense', 'recurring', 'note'
   amount: real('amount'),
   description: text('description'),
   category: text('category'),
-  date: integer('date', { mode: 'timestamp' }),
+  date: timestamp('date'),
   content: text('content'), // For notes
   title: text('title'), // For notes
   frequency: text('frequency'), // For recurring transactions
-  startDate: integer('startDate', { mode: 'timestamp' }), // For recurring transactions
-  endDate: integer('endDate', { mode: 'timestamp' }), // For recurring transactions
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  startdate: timestamp('startdate'), // For recurring transactions
+  enddate: timestamp('enddate'), // For recurring transactions
+  createdat: timestamp('createdat').defaultNow().notNull(),
+  updatedat: timestamp('updatedat').defaultNow().notNull(),
 });
 
 // Blog posts
-export const blogPosts = sqliteTable('blog_posts', {
+export const blogPosts = pgTable('blog_posts', {
   id: text('id').primaryKey(),
   title: text('title').notNull(),
   slug: text('slug').unique().notNull(),
   excerpt: text('excerpt'),
   content: text('content').notNull(),
-  featuredImage: text('featuredImage'),
-  authorId: text('authorId').notNull(),
-  authorName: text('authorName').notNull(),
-  authorAvatar: text('authorAvatar'),
+  featuredimage: text('featuredimage'),
+  authorid: text('authorid').notNull(),
+  authorname: text('authorname').notNull(),
+  authoravatar: text('authoravatar'),
   category: text('category').notNull(),
   tags: text('tags'), // JSON array string
-  metaTitle: text('metaTitle'),
-  metaDescription: text('metaDescription'),
-  metaKeywords: text('metaKeywords'), // JSON array string
+  metatitle: text('metatitle'),
+  metadescription: text('metadescription'),
+  metakeywords: text('metakeywords'), // JSON array string
   status: text('status').default('draft'), // draft, published, archived
-  featured: integer('featured', { mode: 'boolean' }).default(false),
-  viewCount: integer('viewCount').default(0),
-  readingTime: integer('readingTime'), // in minutes
-  publishedAt: integer('publishedAt', { mode: 'timestamp' }),
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  featured: boolean('featured').default(false),
+  viewcount: integer('viewcount').default(0),
+  readingtime: integer('readingtime'), // in minutes
+  publishedat: timestamp('publishedat'),
+  createdat: timestamp('createdat').defaultNow().notNull(),
+  updatedat: timestamp('updatedat').defaultNow().notNull(),
 });
 
 // Blog categories
-export const blogCategories = sqliteTable('blog_categories', {
+export const blogCategories = pgTable('blog_categories', {
   id: text('id').primaryKey(),
   name: text('name').unique().notNull(),
   slug: text('slug').unique().notNull(),
   description: text('description'),
   color: text('color').default('#10b981'),
   icon: text('icon').default('BookOpen'),
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
+  createdat: timestamp('createdat').defaultNow().notNull(),
 });
 
 // Blog analytics
-export const blogAnalytics = sqliteTable('blog_analytics', {
+export const blogAnalytics = pgTable('blog_analytics', {
   id: text('id').primaryKey(),
-  postId: text('postId').notNull(),
-  ipAddress: text('ipAddress'),
-  userAgent: text('userAgent'),
+  postid: text('postid').notNull(),
+  ipaddress: text('ipaddress'),
+  useragent: text('useragent'),
   referrer: text('referrer'),
-  viewedAt: integer('viewedAt', { mode: 'timestamp' }).notNull(),
+  viewedat: timestamp('viewedat').defaultNow().notNull(),
 });
 
 // Blog comments
-export const blogComments = sqliteTable('blog_comments', {
+export const blogComments = pgTable('blog_comments', {
   id: text('id').primaryKey(),
-  postId: text('postId').notNull(),
-  authorName: text('authorName').notNull(),
-  authorEmail: text('authorEmail'),
+  postid: text('postid').notNull(),
+  authorname: text('authorname').notNull(),
+  authoremail: text('authoremail'),
   content: text('content').notNull(),
-  parentId: text('parentId'),
+  parentid: text('parentid'),
   status: text('status').default('pending'), // pending, approved, rejected
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
+  createdat: timestamp('createdat').defaultNow().notNull(),
 });
 
 // Admin users
-export const adminUsers = sqliteTable('admin_users', {
+export const adminUsers = pgTable('admin_users', {
   id: text('id').primaryKey(),
-  userId: text('userId').unique().notNull(),
+  userid: text('userid').unique().notNull(),
   role: text('role').default('admin'),
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  createdat: timestamp('createdat').defaultNow().notNull(),
+  updatedat: timestamp('updatedat').defaultNow().notNull(),
 });
 
 // Investments
-export const investments = sqliteTable('investments', {
+export const investments = pgTable('investments', {
   id: text('id').primaryKey(),
-  userId: text('userId').notNull(),
+  userid: text('userid').notNull(),
   type: text('type').notNull(), // crypto, stock, currency, etc.
   symbol: text('symbol').notNull(),
   name: text('name').notNull(),
   amount: real('amount').notNull(),
-  buyPrice: real('buyPrice').notNull(),
-  currentPrice: real('currentPrice'),
+  buyprice: real('buyprice').notNull(),
+  currentprice: real('currentprice'),
   currency: text('currency').default('USD'),
-  buyDate: integer('buyDate', { mode: 'timestamp' }).notNull(),
+  buydate: timestamp('buydate').notNull(),
   notes: text('notes'),
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
-  updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  createdat: timestamp('createdat').defaultNow().notNull(),
+  updatedat: timestamp('updatedat').defaultNow().notNull(),
 });
 
 // System Logs
-export const systemLogs = sqliteTable('system_logs', {
+export const systemLogs = pgTable('system_logs', {
   id: text('id').primaryKey(),
   type: text('type').notNull(), // 'user_login', 'admin_action', 'api_request', 'error', 'security', 'performance'
   level: text('level').default('info'), // 'debug', 'info', 'warn', 'error', 'fatal'
-  userId: text('userId'), // User ID if applicable
-  adminId: text('adminId'), // Admin ID if applicable
+  userid: text('userid'), // User ID if applicable
+  adminid: text('adminid'), // Admin ID if applicable
   action: text('action').notNull(), // Action performed
   description: text('description'), // Detailed description
   metadata: text('metadata'), // JSON string for additional data
-  ipAddress: text('ipAddress'),
-  userAgent: text('userAgent'),
+  ipaddress: text('ipaddress'),
+  useragent: text('useragent'),
   endpoint: text('endpoint'), // API endpoint for API requests
   method: text('method'), // HTTP method for API requests
-  statusCode: integer('statusCode'), // HTTP status code for API requests
-  responseTime: integer('responseTime'), // Response time in ms for performance logs
+  statuscode: integer('statuscode'), // HTTP status code for API requests
+  responsetime: integer('responsetime'), // Response time in ms for performance logs
   error: text('error'), // Error message for error logs
-  stackTrace: text('stackTrace'), // Stack trace for error logs
-  createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
+  stacktrace: text('stacktrace'), // Stack trace for error logs
+  createdat: timestamp('createdat').defaultNow().notNull(),
 });
 
 // Log Statistics for performance optimization
-export const logStats = sqliteTable('log_stats', {
+export const logStats = pgTable('log_stats', {
   id: text('id').primaryKey(),
-  date: integer('date', { mode: 'timestamp' }).notNull(),
-  logType: text('logType').notNull(), // 'user_login', 'admin_action', 'api_request', 'error', 'security', 'performance'
-  totalCount: integer('totalCount').default(0),
-  errorCount: integer('errorCount').default(0),
-  avgResponseTime: real('avgResponseTime'), // Average response time for API requests
-  uniqueUsers: integer('uniqueUsers'), // Unique users for the day
+  date: timestamp('date').notNull(),
+  logtype: text('logtype').notNull(), // 'user_login', 'admin_action', 'api_request', 'error', 'security', 'performance'
+  totalcount: integer('totalcount').default(0),
+  errorcount: integer('errorcount').default(0),
+  avgresponsetime: real('avgresponsetime'), // Average response time for API requests
+  uniqueusers: integer('uniqueusers'), // Unique users for day
   metadata: text('metadata'), // JSON string for additional stats
 });
 

@@ -1,24 +1,29 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
-import { schema } from './schema';
-import path from 'path';
+import { createClient } from '@supabase/supabase-js';
 
-// Create database connection
-const sqlite = new Database(path.join(process.cwd(), 'db', 'custom.db'));
+// Hardcoded environment variables to fix Next.js loading issue
+const supabaseUrl = "https://dfiwgngtifuqrrxkvknn.supabase.co";
+const supabaseServiceKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmaXdnbmd0aWZ1cXJyeGt2a25uIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NTI3NzMyMSwiZXhwIjoyMDgwODUzMzIxfQ.uCfJ5DzQ2QCiyXycTrHEaKh1EvAFbuP8HBORmBSPbX8";
 
-// Enable foreign keys
-sqlite.pragma('foreign_keys = ON');
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-// Export database instance with schema
-export const db = drizzle(sqlite, { schema });
+// Export supabase client
+export { supabase };
 
-// Export the raw database instance for migrations
-export const rawDb = sqlite;
-
-// Export schema for easy access
-export * from './schema';
-
-// Helper function to close database connection
-export const closeDb = () => {
-  sqlite.close();
+// Test connection function
+export const testConnection = async () => {
+  try {
+    const { data, error } = await supabase.from('users').select('count').limit(1);
+    if (error) {
+      console.error('Supabase connection error:', error.message);
+      return false;
+    }
+    console.log('✓ Supabase connection successful');
+    return true;
+  } catch (error) {
+    console.error('Connection test failed:', error.message);
+    return false;
+  }
 };
+
+// Initialize connection on module load
+testConnection().catch(console.error);

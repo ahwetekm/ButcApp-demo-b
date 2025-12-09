@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db, users } from '@/lib/db'
-import { eq } from 'drizzle-orm'
+import { createClient } from '@supabase/supabase-js'
+
+// Hardcoded Supabase configuration
+const supabaseUrl = "https://dfiwgngtifuqrrxkvknn.supabase.co";
+const supabaseServiceKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmaXdnbmd0aWZ1cXJyeGt2a25uIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NTI3NzMyMSwiZXhwIjoyMDgwODUzMzIxfQ.uCfJ5DzQ2QCiyXycTrHEaKh1EvAFbuP8HBORmBSPbX8";
+
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 export async function POST(request: NextRequest) {
   const startTime = Date.now()
@@ -29,8 +34,21 @@ export async function POST(request: NextRequest) {
 
     console.log('Checking email:', email.toLowerCase().trim())
 
-    // Veritabanında kontrol et
-    const existingUser = await db.select().from(users).where(eq(users.email, email.toLowerCase().trim())).limit(1)
+    // Supabase'de kontrol et
+    const { data: existingUser, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('email', email.toLowerCase().trim())
+      .limit(1)
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json({
+        success: false,
+        error: 'Veritabanı hatası',
+        details: error.message
+      }, { status: 500 })
+    }
 
     console.log('Email check result:', existingUser.length > 0 ? 'exists' : 'not found')
 
