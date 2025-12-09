@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
         heapUsed: Math.round(memUsage.heapUsed / 1024), // MB
         heapTotal: Math.round(memUsage.heapTotal / 1024), // MB
         external: Math.round(memUsage.external / 1024) // MB
-        rss: Math.round(memUsage.rss / 1024) // MB
+        residentSetSize: Math.round(memUsage.rss / 1024) // MB
       },
       nodeVersion: process.version,
       platform: process.platform,

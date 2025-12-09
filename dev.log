@@ -2283,3 +2283,115 @@ Not an admin route or login page, proceeding
 Pathname: /_next/static/development/_devMiddlewareManifest.json
 Method: GET
 Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 500 in 16ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/main.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/react-refresh.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/fallback/pages/_error.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/development/_devMiddlewareManifest.json
+Method: GET
+Not an admin route or login page, proceeding
+ ✓ Compiled in 1023ms (3246 modules)
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/01e38326dea60c5e.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/webpack/01e38326dea60c5e.webpack.hot-update.json
+Method: GET
+Not an admin route or login page, proceeding
+ GET / 200 in 382ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login
+Method: GET
+Login or Admin route, skipping middleware
+ ✓ Compiled /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login in 240ms (1693 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+=== MIDDLEWARE DEBUG ===
+Pathname: /
+Method: GET
+Not an admin route or login page, proceeding
+ GET /0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login 200 in 502ms
+ GET / 200 in 102ms
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/css/app/layout.css
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/webpack.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/main-app.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app-pages-internals.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/layout.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /_next/static/chunks/app/0gv6O9Gizwrd1FCb40H22JE8y9aIgK/login/page.js
+Method: GET
+Not an admin route or login page, proceeding
+=== MIDDLEWARE DEBUG ===
+Pathname: /favicon.png
+Method: GET
+Not an admin route or login page, proceeding
